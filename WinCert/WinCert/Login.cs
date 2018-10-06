@@ -16,6 +16,7 @@ namespace WinCert
         public Login()
         {
             InitializeComponent();
+           // this.Close();
             certificacionForm.Show();
 
 
