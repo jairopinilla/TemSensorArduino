@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace WinCert
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Certificacion certificacionForm = new Certificacion();
+        public Login()
         {
             InitializeComponent();
+            certificacionForm.Show();
+
+
         }
     }
 }
