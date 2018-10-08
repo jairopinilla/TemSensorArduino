@@ -16,16 +16,15 @@ namespace WinCert
 {
     public partial class Certificacion : Form
     {
-       System.IO.Ports.SerialPort ArduinoPort;
-       public float temperatura1 = 0;
-       public float temperatura2 = 0;
-       public float temperatura3 = 0;
+        System.IO.Ports.SerialPort ArduinoPort;
+        public float temperatura1 = 0;
+        public float temperatura2 = 0;
+        public float temperatura3 = 0;
 
-        public string[] seriesArray = { "Temperatura 1", "Temperatura 2","Temperatura 2" };
-        public int[] pointsArray = { 0, 0,0 };
-        public Series series;
-   
+        public string[] seriesArray = { "Temperatura 1", "Temperatura 2", "Temperatura 2" };
+        List<float> pointsArray = new List<float>();
 
+  
 
         public Certificacion()
         {
@@ -41,8 +40,23 @@ namespace WinCert
 
             ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
-            this.Grafico.Palette = ChartColorPalette.SeaGreen;
-            this.Grafico.Titles.Add("Temperatura");
+            this.Grafico.Legends.Add("Temperatura 1");
+            this.Grafico.Series.Add(seriesArray[0]);
+            this.Grafico.Series[0].ChartType = SeriesChartType.Line;
+
+
+            pointsArray.Add(0);
+            pointsArray.Add(1);
+            pointsArray.Add(2);
+            pointsArray.Add(3);
+            pointsArray.Add(4);
+
+
+            this.Grafico.Series[0].Points.DataBindY(pointsArray);
+
+            this.Grafico.DataBind();
+
+           
 
             ArduinoPort.Open();
 
@@ -53,9 +67,7 @@ namespace WinCert
         private  void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
-      
 
-            //  string indata = sp.ReadExisting();
             string indata = sp.ReadLine();
             string curTime = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString();
 
@@ -63,13 +75,27 @@ namespace WinCert
             temperatura2 = temperatura1 + 3;
             temperatura3 = temperatura1 - 5;
 
-            series = this.Grafico.Series.Add(seriesArray[0]);
-            series.Points.Add(pointsArray[(int)Math.Round(temperatura1)]);
-
+            actualiza(temperatura1, temperatura2, temperatura3);
             Console.WriteLine(temperatura1);
             Console.WriteLine(indata);
-            //  Console.WriteLine(curTime + "," + indata);  //write to console
+ 
 
+
+        }
+
+
+        private void actualiza(float t1, float t2, float t3)
+        {
+            Console.WriteLine(t1);
+            Console.WriteLine(t2);
+            Console.WriteLine(t3);
+
+            pointsArray.Add(t1);
+
+            if (InvokeRequired)
+                Invoke(new Action(() =>  Grafico.Series[0].Points.DataBindY(pointsArray)));
+
+          
 
         }
 
