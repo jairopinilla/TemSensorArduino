@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Grafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.Grafico)).BeginInit();
             this.SuspendLayout();
@@ -46,10 +45,7 @@
             this.Grafico.Legends.Add(legend1);
             this.Grafico.Location = new System.Drawing.Point(0, 0);
             this.Grafico.Name = "Grafico";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Grafico.Series.Add(series1);
+            this.Grafico.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Grafico.Size = new System.Drawing.Size(800, 450);
             this.Grafico.TabIndex = 0;
             this.Grafico.Text = "chart1";

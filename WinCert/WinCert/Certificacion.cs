@@ -21,10 +21,12 @@ namespace WinCert
         public float temperatura2 = 0;
         public float temperatura3 = 0;
 
-        public string[] seriesArray = { "Temperatura 1", "Temperatura 2", "Temperatura 2" };
-        List<float> pointsArray = new List<float>();
+       
+        List<float> pointsArray1 = new List<float>();
+        List<float> pointsArray2 = new List<float>();
+        List<float> pointsArray3 = new List<float>();
 
-  
+
 
         public Certificacion()
         {
@@ -40,25 +42,26 @@ namespace WinCert
 
             ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
-            this.Grafico.Legends.Add("Temperatura 1");
-            this.Grafico.Series.Add(seriesArray[0]);
-            this.Grafico.Series[0].ChartType = SeriesChartType.Line;
-
-
-            pointsArray.Add(0);
-            pointsArray.Add(1);
-            pointsArray.Add(2);
-            pointsArray.Add(3);
-            pointsArray.Add(4);
-
-
-            this.Grafico.Series[0].Points.DataBindY(pointsArray);
-
-            this.Grafico.DataBind();
-
-           
-
             ArduinoPort.Open();
+
+
+            /**************************************************************/
+
+            Grafico.Series.Add("Temperatura 1");
+            Grafico.Series.Add("Temperatura 2");
+
+       
+
+            Grafico.Series["Temperatura 1"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Temperatura 1"].Color = Color.Red;
+
+            Grafico.Series["Temperatura 2"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Temperatura 2"].Color = Color.Blue;
+
+            Grafico.Series["Temperatura 1"].XValueType = ChartValueType.Time;
+            Grafico.Series["Temperatura 2"].XValueType = ChartValueType.Time;
+ 
+
 
 
 
@@ -90,12 +93,28 @@ namespace WinCert
             Console.WriteLine(t2);
             Console.WriteLine(t3);
 
-            pointsArray.Add(t1);
+            if (InvokeRequired)
+                Invoke(new Action(() => Grafico.Series["Temperatura 1"].Points.AddXY(DateTime.Now, t1)));
 
             if (InvokeRequired)
-                Invoke(new Action(() =>  Grafico.Series[0].Points.DataBindY(pointsArray)));
+                Invoke(new Action(() => Grafico.Series["Temperatura 2"].Points.AddXY(DateTime.Now, t2)));
 
-          
+
+
+            /*
+
+            if (InvokeRequired)
+                Invoke(new Action(() =>  Grafico.Series[0].Points.DataBindY(pointsArray1)));
+
+            if (InvokeRequired)
+                Invoke(new Action(() => Grafico.Series[1].Points.DataBindY(pointsArray2)));
+
+            if (InvokeRequired)
+                Invoke(new Action(() => Grafico.Series[2].Points.DataBindY(pointsArray3)));
+
+    */
+
+
 
         }
 
