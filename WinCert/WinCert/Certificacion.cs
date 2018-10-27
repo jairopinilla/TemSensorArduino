@@ -47,20 +47,25 @@ namespace WinCert
 
             /**************************************************************/
 
-            Grafico.Series.Add("Temperatura 1");
-            Grafico.Series.Add("Temperatura 2");
+            Grafico.Series.Add("Sensor 1");
+            Grafico.Series.Add("Sensor 2");
+            Grafico.Series.Add("Sensor 3");
 
-       
 
-            Grafico.Series["Temperatura 1"].ChartType = SeriesChartType.FastLine;
-            Grafico.Series["Temperatura 1"].Color = Color.Red;
 
-            Grafico.Series["Temperatura 2"].ChartType = SeriesChartType.FastLine;
-            Grafico.Series["Temperatura 2"].Color = Color.Blue;
+            Grafico.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Sensor 1"].Color = Color.Red;
 
-            Grafico.Series["Temperatura 1"].XValueType = ChartValueType.Time;
-            Grafico.Series["Temperatura 2"].XValueType = ChartValueType.Time;
- 
+            Grafico.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Sensor 2"].Color = Color.Blue;
+
+            Grafico.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Sensor 3"].Color = Color.Green;
+
+            Grafico.Series["Sensor 1"].XValueType = ChartValueType.Time;
+            Grafico.Series["Sensor 2"].XValueType = ChartValueType.Time;
+            Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
+
 
 
 
@@ -81,8 +86,6 @@ namespace WinCert
             actualiza(temperatura1, temperatura2, temperatura3);
             Console.WriteLine(temperatura1);
             Console.WriteLine(indata);
- 
-
 
         }
 
@@ -92,33 +95,51 @@ namespace WinCert
             Console.WriteLine(t1);
             Console.WriteLine(t2);
             Console.WriteLine(t3);
+            //------------------------------------------------------------------------------------------//
 
             if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series["Temperatura 1"].Points.AddXY(DateTime.Now, t1)));
+                Invoke(new Action(() => label1.Text = t1.ToString()));
 
             if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series["Temperatura 2"].Points.AddXY(DateTime.Now, t2)));
-
-
-
-            /*
+                Invoke(new Action(() => label2.Text = t2.ToString()));
 
             if (InvokeRequired)
-                Invoke(new Action(() =>  Grafico.Series[0].Points.DataBindY(pointsArray1)));
+                Invoke(new Action(() => label3.Text = t2.ToString()));
+
+            //--------------------------------------------------------------------------------------------//
+            if (InvokeRequired)
+                Invoke(new Action(() => Grafico.Series["Sensor 1"].Points.AddXY(DateTime.Now, t1)));
 
             if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series[1].Points.DataBindY(pointsArray2)));
+                Invoke(new Action(() => Grafico.Series["Sensor 2"].Points.AddXY(DateTime.Now, t2)));
 
             if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series[2].Points.DataBindY(pointsArray3)));
+                Invoke(new Action(() => Grafico.Series["Sensor 3"].Points.AddXY(DateTime.Now, t3)));
 
-    */
+
+
+
 
 
 
         }
 
         private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
