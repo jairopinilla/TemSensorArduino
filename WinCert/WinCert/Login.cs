@@ -40,17 +40,79 @@ namespace WinCert
                 SQLiteConnection.CreateFile(DBName);
                 SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
                 m_dbConnection.Open();
-
+                //----------------------------------------------------------------
                 var commandStr = "CREATE TABLE Acceso(Codigo char(50))";
                 SQLiteCommand createTable = new SQLiteCommand(commandStr, m_dbConnection);
                 createTable.ExecuteReader();
+                //----------------------------------------------------------------
 
+                commandStr = "CREATE TABLE Certificador(Nombre char(50), Apellido char(50), Rut char(50) PRIMARY KEY)";
+                createTable = new SQLiteCommand(commandStr, m_dbConnection);
+                createTable.ExecuteReader();
+
+                //----------------------------------------------------------------
+
+                commandStr = "CREATE TABLE Cliente(Nombre char(100), Giro char(100), Rut char(100) PRIMARY KEY, Direccion char(500))";
+                createTable = new SQLiteCommand(commandStr, m_dbConnection);
+                createTable.ExecuteReader();
+
+                //----------------------------------------------------------------
+
+                commandStr = "CREATE TABLE Certificacion(" +
+                       "Certificacion_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                       "Revision char(100), " +
+                      "finalizado integer, " +
+                      "certificado integer, " +
+                      "FechaAprovacion datetime, " +
+                       "CamaraCodigo char(500), " +
+                       "Cliente char(500), "+
+                       "RutCliente char(500), " +
+                       "GiroCliente char(500), " +
+                       "DireccionCliente char(500), " +
+                       "Facturaguia char(500), " +
+                       "Tipo char(500), " +
+                       "Tamano char(500), " +
+                      "Cantidad integer, " +
+                       "Descripcion char(1000), " +
+                       "NombreCertificador char(500), " +
+                       "ApellidoCertificador char(500) )";
+
+
+                createTable = new SQLiteCommand(commandStr, m_dbConnection);
+                createTable.ExecuteReader();
+
+                //----------------------------------------------------------------
+
+                commandStr = "CREATE TABLE LineaCertificacion(" +
+                    "LineaCertificacion_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "Certificacion_id INTEGER, " +
+                    "enCertificacion integer, " +
+                    "Sensor1 real, Sensor2 real, Sensor3 real, Fecha datetime,"+
+                    "FOREIGN KEY(Certificacion_id) REFERENCES Certificacion(Certificacion_id)) ";
+         createTable = new SQLiteCommand(commandStr, m_dbConnection);
+                createTable.ExecuteReader();
+
+                //----------------------------------------------------------------
+
+                commandStr = "CREATE TABLE Camara(Codigo char(100) PRIMARY KEY)";
+                createTable = new SQLiteCommand(commandStr, m_dbConnection);
+                createTable.ExecuteReader();
+
+                //---------------------------------------------------
 
                 SQLiteCommand insertCommand = new SQLiteCommand();
                 insertCommand.Connection = m_dbConnection;
-
+                //----------------------------------------------------------------
                 insertCommand.CommandText = "INSERT INTO Acceso VALUES (@Entry);";
-                insertCommand.Parameters.AddWithValue("@Entry", "certifica2013");
+                insertCommand.Parameters.AddWithValue("@Entry", "certifica2019");
+
+                insertCommand.ExecuteReader();
+
+                //----------------------------------------------------------------
+                insertCommand = new SQLiteCommand();
+                insertCommand.Connection = m_dbConnection;
+                insertCommand.CommandText = "INSERT INTO Acceso VALUES (@Entry);";
+                insertCommand.Parameters.AddWithValue("@Entry", "certificamula2019");
 
                 insertCommand.ExecuteReader();
 

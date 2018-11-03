@@ -38,6 +38,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Cliente = new System.Windows.Forms.TabPage();
+            this.Certificador = new System.Windows.Forms.TabPage();
+            this.Camara = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grafico)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -48,7 +52,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1037, 632);
+            this.tabPage2.Size = new System.Drawing.Size(892, 624);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Certificaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -93,6 +97,10 @@
             this.tabControl1.AccessibleName = "tab1";
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.Cliente);
+            this.tabControl1.Controls.Add(this.Certificador);
+            this.tabControl1.Controls.Add(this.Camara);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.Location = new System.Drawing.Point(6, 48);
             this.tabControl1.MinimumSize = new System.Drawing.Size(850, 650);
@@ -140,6 +148,46 @@
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // Cliente
+            // 
+            this.Cliente.AccessibleName = "ClienteTab";
+            this.Cliente.Location = new System.Drawing.Point(4, 22);
+            this.Cliente.Name = "Cliente";
+            this.Cliente.Size = new System.Drawing.Size(892, 624);
+            this.Cliente.TabIndex = 2;
+            this.Cliente.Text = "Cliente";
+            this.Cliente.UseVisualStyleBackColor = true;
+            // 
+            // Certificador
+            // 
+            this.Certificador.AccessibleName = "CertificadorTab";
+            this.Certificador.Location = new System.Drawing.Point(4, 22);
+            this.Certificador.Name = "Certificador";
+            this.Certificador.Size = new System.Drawing.Size(892, 624);
+            this.Certificador.TabIndex = 3;
+            this.Certificador.Text = "Certificador";
+            this.Certificador.UseVisualStyleBackColor = true;
+            // 
+            // Camara
+            // 
+            this.Camara.AccessibleName = "CamaraTab";
+            this.Camara.Location = new System.Drawing.Point(4, 22);
+            this.Camara.Name = "Camara";
+            this.Camara.Size = new System.Drawing.Size(892, 624);
+            this.Camara.TabIndex = 4;
+            this.Camara.Text = "CamaraTab";
+            this.Camara.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.AccessibleName = "GeneracionTab";
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(892, 624);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "Generacion";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // Certificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,5 +219,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage Cliente;
+        private System.Windows.Forms.TabPage Certificador;
+        private System.Windows.Forms.TabPage Camara;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
