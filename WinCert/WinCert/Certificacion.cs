@@ -11,6 +11,8 @@ using System.IO.Ports;
 using System.IO;
 using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Data.SQLite;
+using WinCert.Clases;
 
 namespace WinCert
 {
@@ -25,7 +27,6 @@ namespace WinCert
         List<float> pointsArray1 = new List<float>();
         List<float> pointsArray2 = new List<float>();
         List<float> pointsArray3 = new List<float>();
-
 
 
         public Certificacion()
@@ -67,12 +68,45 @@ namespace WinCert
             Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
 
+            /**************************************************************/
 
-
+            ActualizarListaCertificadores();
 
         }
 
-        private  void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+
+public void ActualizarListaCertificadores()
+  {
+     
+      SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+      conexion.Open();
+ 
+     // Lanzamos la consulta y preparamos la estructura para leer datos
+     string consulta = "select * from Certificador";
+
+     // Adaptador de datos, DataSet y tabla
+    SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
+
+     DataSet ds = new DataSet();
+    ds.Reset();
+
+     DataTable dt = new DataTable();
+    db.Fill(ds);
+
+     //Asigna al DataTable la primer tabla (ciudades) 
+     // y la mostramos en el DataGridView
+     dt = ds.Tables[0];
+
+    dataGridView1Certificadores.DataSource = dt;
+
+     // Y ya podemos cerrar la conexion
+     conexion.Close();
+
+ }
+
+
+
+    private  void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
 
@@ -141,6 +175,130 @@ namespace WinCert
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void botonInsertar_Click(object sender, EventArgs e)
+        {
+            advertencia.Text = "";
+
+            if (textBox1Rut.Text == "" || textBox1Nombre.Text == "" || textBox1Apellido.Text == "")
+            {
+                advertencia.Text = "Faltan Datos";
+            }
+            else {
+
+                List<String> entries = new List<string>();
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select Rut from Certificador where Rut=@Entry;";
+                Command.Parameters.AddWithValue("@Entry", textBox1Rut.Text);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+
+                m_dbConnection.Close();
+
+
+                if (entries.Count() > 0)
+                {
+
+                    advertencia.Text = "El certificador ya existe";
+
+                }
+                else {
+
+                    m_dbConnection.Open();
+
+                    Command = new SQLiteCommand();
+                    Command.Connection = m_dbConnection;
+                    Command.CommandText = "Insert into Certificador(Nombre, Apellido, Rut) values (@nombre,@apellido,@rut);";
+                    Command.Parameters.AddWithValue("@rut", textBox1Rut.Text);
+                    Command.Parameters.AddWithValue("@nombre", textBox1Nombre.Text);
+                    Command.Parameters.AddWithValue("@apellido", textBox1Apellido.Text);
+
+                    query = Command.ExecuteReader();
+
+                    m_dbConnection.Close();
+
+                    ActualizarListaCertificadores();
+
+                    textBox1Rut.Text = "";
+                    textBox1Nombre.Text = "";
+                    textBox1Apellido.Text = "";
+
+
+                }
+
+
+            }
+            
+        }
+
+        private void button1limpiar_Click(object sender, EventArgs e)
+        {
+            textBox1Rut.Text = "";
+            textBox1Nombre.Text = "";
+            textBox1Apellido.Text = "";
+        }
+
+        private void button1borrarCertificador_Click(object sender, EventArgs e)
+        {
+
+            advertencia.Text = "";
+
+            if (dataGridView1Certificadores.SelectedRows.Count == 0)
+            {
+
+                advertencia.Text = "Debe seleccionar un certificador para borrar, la linea entera";
+
+            }
+            else {
+
+               string rut= dataGridView1Certificadores.SelectedRows[0].Cells[2].Value.ToString();
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "delete from Certificador where Rut=@Entry;";
+                Command.Parameters.AddWithValue("@Entry", rut);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+                m_dbConnection.Close();
+
+            }
+
+            ActualizarListaCertificadores();
 
         }
     }
