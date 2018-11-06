@@ -28,6 +28,10 @@ namespace WinCert
         List<float> pointsArray2 = new List<float>();
         List<float> pointsArray3 = new List<float>();
 
+        DataTable dtCamaras = new DataTable();
+        DataTable dtClientes = new DataTable();
+        DataTable dtCertificadores = new DataTable();
+
 
         public Certificacion()
         {
@@ -71,36 +75,112 @@ namespace WinCert
             /**************************************************************/
 
             ActualizarListaCertificadores();
+            ActualizarListaCamaras();
+            ActualizarListaClientes();
+
+            comboBox1Camara.DisplayMember = "Codigo";
+            comboBox1Camara.ValueMember = "Codigo";
+            comboBox1Camara.DataSource = dtCamaras;
+
+            comboBox1Certificador.DisplayMember = "Nombre";
+            comboBox1Certificador.ValueMember = "Rut";
+            comboBox1Certificador.DataSource = dtCertificadores;
+
+            comboBox1Cliente.DisplayMember = "Nombre";
+            comboBox1Cliente.ValueMember = "Rut";
+            comboBox1Cliente.DataSource = dtClientes;
+
+            label8AdvertenciaGeneracion.Text = "";
+        }
+
+        public void ActualizarListaCamaras()
+        {
+
+            SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            conexion.Open();
+
+            // Lanzamos la consulta y preparamos la estructura para leer datos
+            string consulta = "select * from Camara";
+
+            // Adaptador de datos, DataSet y tabla
+            SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
+
+            DataSet ds = new DataSet();
+            ds.Reset();
+
+            dtCamaras= new DataTable();
+            db.Fill(ds);
+
+            //Asigna al DataTable la primer tabla (ciudades) 
+            // y la mostramos en el DataGridView
+            dtCamaras = ds.Tables[0];
+
+            dataGridView1Camara.DataSource = dtCamaras;
+
+            // Y ya podemos cerrar la conexion
+            conexion.Close();
 
         }
 
 
-public void ActualizarListaCertificadores()
+
+        public void ActualizarListaClientes()
+        {
+
+            SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            conexion.Open();
+
+            // Lanzamos la consulta y preparamos la estructura para leer datos
+            string consulta = "select * from Cliente";
+
+            // Adaptador de datos, DataSet y tabla
+            SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
+
+            DataSet ds = new DataSet();
+            ds.Reset();
+
+            dtClientes = new DataTable();
+            db.Fill(ds);
+
+            //Asigna al DataTable la primer tabla (ciudades) 
+            // y la mostramos en el DataGridView
+            dtClientes = ds.Tables[0];
+
+            dataGridView1Clientes.DataSource = dtClientes;
+
+            // Y ya podemos cerrar la conexion
+            conexion.Close();
+
+        }
+
+
+
+        public void ActualizarListaCertificadores()
   {
      
-      SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
-      conexion.Open();
+              SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+              conexion.Open();
  
-     // Lanzamos la consulta y preparamos la estructura para leer datos
-     string consulta = "select * from Certificador";
+             // Lanzamos la consulta y preparamos la estructura para leer datos
+             string consulta = "select * from Certificador";
 
-     // Adaptador de datos, DataSet y tabla
-    SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
+             // Adaptador de datos, DataSet y tabla
+            SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
 
-     DataSet ds = new DataSet();
-    ds.Reset();
+             DataSet ds = new DataSet();
+            ds.Reset();
 
-     DataTable dt = new DataTable();
-    db.Fill(ds);
+             dtCertificadores = new DataTable();
+            db.Fill(ds);
 
-     //Asigna al DataTable la primer tabla (ciudades) 
-     // y la mostramos en el DataGridView
-     dt = ds.Tables[0];
+                    //Asigna al DataTable la primer tabla (ciudades) 
+                    // y la mostramos en el DataGridView
+                    dtCertificadores = ds.Tables[0];
 
-    dataGridView1Certificadores.DataSource = dt;
+            dataGridView1Certificadores.DataSource = dtCertificadores;
 
-     // Y ya podemos cerrar la conexion
-     conexion.Close();
+             // Y ya podemos cerrar la conexion
+             conexion.Close();
 
  }
 
@@ -299,6 +379,274 @@ public void ActualizarListaCertificadores()
             }
 
             ActualizarListaCertificadores();
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1ingresarCliente_Click(object sender, EventArgs e)
+        {
+
+            label7clienteadvertencia.Text = "";
+
+            if (textBox1rutcliente.Text == "" || textBox1nombrecliente.Text == "" || textBox1direccioncliente.Text == ""
+                || textBox1girocliente.Text == "")
+            {
+                label7clienteadvertencia.Text = "Faltan Datos";
+            }
+            else
+            {
+
+                List<String> entries = new List<string>();
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select Rut from Cliente where Rut=@Entry;";
+                Command.Parameters.AddWithValue("@Entry", textBox1rutcliente.Text);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+
+                m_dbConnection.Close();
+
+
+                if (entries.Count() > 0)
+                {
+
+                    label7clienteadvertencia.Text = "El Cliente ya existe";
+
+                }
+                else
+                {
+
+                    m_dbConnection.Open();
+
+                    Command = new SQLiteCommand();
+                    Command.Connection = m_dbConnection;
+                    Command.CommandText = "Insert into Cliente(Nombre, Giro, Rut, Direccion) values (@nombre,@giro,@rut,@direccion);";
+                    Command.Parameters.AddWithValue("@rut", textBox1rutcliente.Text);
+                    Command.Parameters.AddWithValue("@nombre", textBox1nombrecliente.Text);
+                    Command.Parameters.AddWithValue("@giro", textBox1girocliente.Text);
+                    Command.Parameters.AddWithValue("@direccion", textBox1direccioncliente.Text);
+
+                    query = Command.ExecuteReader();
+
+                    m_dbConnection.Close();
+
+                    ActualizarListaClientes();
+
+                    textBox1rutcliente.Text = "";
+                    textBox1nombrecliente.Text = "";
+                    textBox1girocliente.Text = "";
+                    textBox1direccioncliente.Text = "";
+
+
+                }
+
+
+            }
+
+        }
+
+        private void button1clienteeliminar_Click(object sender, EventArgs e)
+        {
+
+            label7clienteadvertencia.Text = "";
+
+            if (dataGridView1Clientes.SelectedRows.Count == 0)
+            {
+
+                label7clienteadvertencia.Text = "Debe seleccionar un cliente para borrar, la linea entera";
+
+            }
+            else
+            {
+
+                string rut = dataGridView1Clientes.SelectedRows[0].Cells[2].Value.ToString();
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "delete from Cliente where Rut=@Entry;";
+                Command.Parameters.AddWithValue("@Entry", rut);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+                m_dbConnection.Close();
+
+            }
+
+            ActualizarListaClientes();
+
+        }
+
+        private void button1clientelimpiar_Click(object sender, EventArgs e)
+        {
+
+            textBox1rutcliente.Text = "";
+            textBox1nombrecliente.Text = "";
+            textBox1girocliente.Text = "";
+            textBox1direccioncliente.Text = "";
+        }
+
+        private void button1insertarcamara_Click(object sender, EventArgs e)
+        {
+            label7advertenciacamara.Text = "";
+
+            if (textBox1codigoCamara.Text == "" )
+            {
+                label7advertenciacamara.Text = "Faltan Datos";
+            }
+            else
+            {
+
+                List<String> entries = new List<string>();
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select Codigo from Camara where Codigo=@Entry;";
+                Command.Parameters.AddWithValue("@Entry", textBox1codigoCamara.Text);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+
+                m_dbConnection.Close();
+
+
+                if (entries.Count() > 0)
+                {
+
+                    label7advertenciacamara.Text = "La camara ya existe";
+
+                }
+                else
+                {
+
+                    m_dbConnection.Open();
+
+                    Command = new SQLiteCommand();
+                    Command.Connection = m_dbConnection;
+                    Command.CommandText = "Insert into Camara(Codigo) values (@codigo);";
+                    Command.Parameters.AddWithValue("@codigo", textBox1codigoCamara.Text);
+                  
+                    query = Command.ExecuteReader();
+
+                    m_dbConnection.Close();
+
+                    ActualizarListaCamaras();
+
+                    textBox1codigoCamara.Text = "";
+           
+
+
+                }
+
+
+            }
+        }
+
+        private void button1CamaraLimpiar_Click(object sender, EventArgs e)
+        {
+            textBox1codigoCamara.Text = "";
+        }
+
+        private void button1CamaraEliminar_Click(object sender, EventArgs e)
+        {
+            label7advertenciacamara.Text = "";
+
+            if (dataGridView1Camara.SelectedRows.Count == 0)
+            {
+
+                label7advertenciacamara.Text = "Debe seleccionar una camara para borrar, la linea entera";
+
+            }
+            else
+            {
+
+                string codigo = dataGridView1Camara.SelectedRows[0].Cells[0].Value.ToString();
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "delete from Camara where Codigo=@Entry;";
+                Command.Parameters.AddWithValue("@Entry", codigo);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+                m_dbConnection.Close();
+
+            }
+
+            ActualizarListaCamaras();
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+            ActualizarListaCamaras();
+            ActualizarListaCertificadores();
+            ActualizarListaClientes();
+
+            comboBox1Camara.DisplayMember = "Codigo";
+            comboBox1Camara.ValueMember = "Codigo";
+            comboBox1Camara.DataSource = dtCamaras;
+
+            comboBox1Certificador.DisplayMember = "Nombre";
+            comboBox1Certificador.ValueMember = "Rut";
+            comboBox1Certificador.DataSource = dtCertificadores;
+
+            comboBox1Cliente.DisplayMember = "Nombre";
+            comboBox1Cliente.ValueMember = "Rut";
+            comboBox1Cliente.DataSource = dtClientes;
+        }
+
+        private void button1Generar_Click(object sender, EventArgs e)
+        {
+
+            label8AdvertenciaGeneracion.Text = "";
+
+            if (  
+                comboBox1Camara.SelectedValue.ToString() == "" || comboBox1Camara.SelectedValue.ToString() == null 
+                || comboBox1Certificador.SelectedValue.ToString() == "" || comboBox1Certificador.SelectedValue.ToString() == null
+                || comboBox1Cliente.SelectedValue.ToString() == "" || comboBox1Cliente.SelectedValue.ToString() == null
+                || textBox1GeneraTamano.Text == "" || textBox1GeneraTamano.Text == null
+                || textBox1GeneraTipo.Text == "" || textBox1GeneraTipo.Text == null
+                || textBox1GeneraCantidad.Text == "" || textBox1GeneraCantidad.Text == null
+                || textBox1GEneraFacturaGuia.Text == "" || textBox1GEneraFacturaGuia.Text == null
+
+                )
+            {
+
+                label8AdvertenciaGeneracion.Text = "Debe Seleccionar todos los campos";
+
+            }
+        }
+
+        private void button1Limpiargeneracion_Click(object sender, EventArgs e)
+        {
+            label8AdvertenciaGeneracion.Text = "";
+        }
+
+        private void textBox1GeneraTamano_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
