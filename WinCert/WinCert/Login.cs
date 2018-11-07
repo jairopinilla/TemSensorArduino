@@ -51,8 +51,7 @@ namespace WinCert
                 createTable.ExecuteReader();
 
                 //----------------------------------------------------------------
-
-                commandStr = "CREATE TABLE Cliente(Nombre char(100), Giro char(100), Rut char(100) PRIMARY KEY, Direccion char(500))";
+                 commandStr = "CREATE TABLE Cliente(Nombre char(100), Giro char(100), Rut char(100) PRIMARY KEY, Direccion char(500))";
                 createTable = new SQLiteCommand(commandStr, m_dbConnection);
                 createTable.ExecuteReader();
 

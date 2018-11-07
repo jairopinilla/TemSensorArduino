@@ -73,6 +73,7 @@
             this.textBox1codigoCamara = new System.Windows.Forms.TextBox();
             this.label7camaracodigo = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label8AdvertenciaGeneracion = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -101,7 +102,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label8AdvertenciaGeneracion = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grafico)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -562,6 +562,16 @@
             this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
+            // label8AdvertenciaGeneracion
+            // 
+            this.label8AdvertenciaGeneracion.AutoSize = true;
+            this.label8AdvertenciaGeneracion.ForeColor = System.Drawing.Color.Crimson;
+            this.label8AdvertenciaGeneracion.Location = new System.Drawing.Point(545, 25);
+            this.label8AdvertenciaGeneracion.Name = "label8AdvertenciaGeneracion";
+            this.label8AdvertenciaGeneracion.Size = new System.Drawing.Size(41, 13);
+            this.label8AdvertenciaGeneracion.TabIndex = 20;
+            this.label8AdvertenciaGeneracion.Text = "label11";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -840,16 +850,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label8AdvertenciaGeneracion
-            // 
-            this.label8AdvertenciaGeneracion.AutoSize = true;
-            this.label8AdvertenciaGeneracion.ForeColor = System.Drawing.Color.Crimson;
-            this.label8AdvertenciaGeneracion.Location = new System.Drawing.Point(545, 25);
-            this.label8AdvertenciaGeneracion.Name = "label8AdvertenciaGeneracion";
-            this.label8AdvertenciaGeneracion.Size = new System.Drawing.Size(41, 13);
-            this.label8AdvertenciaGeneracion.TabIndex = 20;
-            this.label8AdvertenciaGeneracion.Text = "label11";
             // 
             // Certificacion
             // 

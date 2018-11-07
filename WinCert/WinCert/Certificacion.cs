@@ -23,7 +23,7 @@ namespace WinCert
         public float temperatura2 = 0;
         public float temperatura3 = 0;
 
-       
+
         List<float> pointsArray1 = new List<float>();
         List<float> pointsArray2 = new List<float>();
         List<float> pointsArray3 = new List<float>();
@@ -40,7 +40,7 @@ namespace WinCert
 
         private void Certificacion_Load(object sender, EventArgs e)
         {
-         
+
             ArduinoPort = new System.IO.Ports.SerialPort();
             ArduinoPort.PortName = "COM4";  //sustituir por vuestro 
             ArduinoPort.BaudRate = 9600;
@@ -108,7 +108,7 @@ namespace WinCert
             DataSet ds = new DataSet();
             ds.Reset();
 
-            dtCamaras= new DataTable();
+            dtCamaras = new DataTable();
             db.Fill(ds);
 
             //Asigna al DataTable la primer tabla (ciudades) 
@@ -156,44 +156,44 @@ namespace WinCert
 
 
         public void ActualizarListaCertificadores()
-  {
-     
-              SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
-              conexion.Open();
- 
-             // Lanzamos la consulta y preparamos la estructura para leer datos
-             string consulta = "select * from Certificador";
+        {
 
-             // Adaptador de datos, DataSet y tabla
+            SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            conexion.Open();
+
+            // Lanzamos la consulta y preparamos la estructura para leer datos
+            string consulta = "select * from Certificador";
+
+            // Adaptador de datos, DataSet y tabla
             SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
 
-             DataSet ds = new DataSet();
+            DataSet ds = new DataSet();
             ds.Reset();
 
-             dtCertificadores = new DataTable();
+            dtCertificadores = new DataTable();
             db.Fill(ds);
 
-                    //Asigna al DataTable la primer tabla (ciudades) 
-                    // y la mostramos en el DataGridView
-                    dtCertificadores = ds.Tables[0];
+            //Asigna al DataTable la primer tabla (ciudades) 
+            // y la mostramos en el DataGridView
+            dtCertificadores = ds.Tables[0];
 
             dataGridView1Certificadores.DataSource = dtCertificadores;
 
-             // Y ya podemos cerrar la conexion
-             conexion.Close();
+            // Y ya podemos cerrar la conexion
+            conexion.Close();
 
- }
+        }
 
 
 
-    private  void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
 
             string indata = sp.ReadLine();
             string curTime = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString();
 
-            temperatura1=float.Parse(indata, CultureInfo.InvariantCulture.NumberFormat);
+            temperatura1 = float.Parse(indata, CultureInfo.InvariantCulture.NumberFormat);
             temperatura2 = temperatura1 + 3;
             temperatura3 = temperatura1 - 5;
 
@@ -275,7 +275,7 @@ namespace WinCert
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void botonInsertar_Click(object sender, EventArgs e)
@@ -340,7 +340,7 @@ namespace WinCert
 
 
             }
-            
+
         }
 
         private void button1limpiar_Click(object sender, EventArgs e)
@@ -363,7 +363,7 @@ namespace WinCert
             }
             else {
 
-               string rut= dataGridView1Certificadores.SelectedRows[0].Cells[2].Value.ToString();
+                string rut = dataGridView1Certificadores.SelectedRows[0].Cells[2].Value.ToString();
 
                 SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
                 m_dbConnection.Open();
@@ -504,7 +504,7 @@ namespace WinCert
         {
             label7advertenciacamara.Text = "";
 
-            if (textBox1codigoCamara.Text == "" )
+            if (textBox1codigoCamara.Text == "")
             {
                 label7advertenciacamara.Text = "Faltan Datos";
             }
@@ -546,7 +546,7 @@ namespace WinCert
                     Command.Connection = m_dbConnection;
                     Command.CommandText = "Insert into Camara(Codigo) values (@codigo);";
                     Command.Parameters.AddWithValue("@codigo", textBox1codigoCamara.Text);
-                  
+
                     query = Command.ExecuteReader();
 
                     m_dbConnection.Close();
@@ -554,7 +554,7 @@ namespace WinCert
                     ActualizarListaCamaras();
 
                     textBox1codigoCamara.Text = "";
-           
+
 
 
                 }
@@ -623,8 +623,8 @@ namespace WinCert
 
             label8AdvertenciaGeneracion.Text = "";
 
-            if (  
-                comboBox1Camara.SelectedValue.ToString() == "" || comboBox1Camara.SelectedValue.ToString() == null 
+            if (
+                comboBox1Camara.SelectedValue.ToString() == "" || comboBox1Camara.SelectedValue.ToString() == null
                 || comboBox1Certificador.SelectedValue.ToString() == "" || comboBox1Certificador.SelectedValue.ToString() == null
                 || comboBox1Cliente.SelectedValue.ToString() == "" || comboBox1Cliente.SelectedValue.ToString() == null
                 || textBox1GeneraTamano.Text == "" || textBox1GeneraTamano.Text == null
@@ -638,6 +638,205 @@ namespace WinCert
                 label8AdvertenciaGeneracion.Text = "Debe Seleccionar todos los campos";
 
             }
+            else {
+
+                string codigocamara = comboBox1Camara.SelectedValue.ToString();
+                string rutcliente = comboBox1Cliente.SelectedValue.ToString();
+                string rutcertificador = comboBox1Certificador.SelectedValue.ToString();
+                string tamano = textBox1GeneraTamano.Text;
+                string tipo = textBox1GeneraTipo.Text;
+                string cantidad = textBox1GeneraCantidad.Text;
+                string facturaguia = textBox1GEneraFacturaGuia.Text;
+
+                string fechageneracion = dateTimePicker1InicioGeneracion.Value.ToShortDateString();
+                string horageneracion = dateTimePicker1generaciontime.Value.ToShortTimeString();
+
+                string nombrecertificador = "";
+                string apellidocertificador = "";
+
+                string nombrecliente = "";
+                string girocliente = "";
+                string direccioncliente = "";
+
+
+                //----------------------------------------------------------------------
+
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select nombre,apellido, rut from Certificador where Rut=@rut;";
+                Command.Parameters.AddWithValue("@rut", rutcertificador);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    nombrecertificador = query.GetString(0);
+                    apellidocertificador = query.GetString(1);
+                }
+
+
+                //------------------------------------------------------------------
+
+                Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select nombre,giro, rut, direccion from Cliente where Rut=@rut;";
+                Command.Parameters.AddWithValue("@rut", rutcliente);
+
+                query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    nombrecliente = query.GetString(0);
+                    girocliente = query.GetString(1);
+                    direccioncliente = query.GetString(2);
+                }
+
+                m_dbConnection.Close();
+
+                //------------------------------------------------------------------
+
+                label8GeneraCamara.Text = codigocamara;
+                label8GeneraCliente.Text = nombrecliente;
+                label8GeneraRut.Text = rutcliente;
+                label8GeneraGiro.Text = girocliente;
+                label8GeneraDireccion.Text = direccioncliente;
+                label8GeneraNombreCert.Text = nombrecertificador;
+                label8GeneraApellido.Text = apellidocertificador;
+
+
+
+                label8AdvertenciaGeneracion.Text = "";
+
+                generaDatos(nombrecertificador, apellidocertificador, nombrecliente, girocliente, direccioncliente, rutcliente,
+                    codigocamara, tamano, tipo, cantidad, facturaguia, fechageneracion, horageneracion);
+
+            }
+
+
+
+        }
+
+        private void generaDatos(string nombrecert, string apellidocert, string nombreclient, string giroclient, string direccionclient,
+            string rutclient, string codigocamara, string tamano, string tipo, string cantidad, string facturaguia, string fecha, string hora) {
+
+            //**************************************************************************************************
+
+            int Certificacion_id=0;
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+            SQLiteCommand Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "insert into Certificacion (finalizado,certificado, FechaAprovacion, CamaraCodigo, Cliente, " +
+                " RutCliente,GiroCliente,DireccionCliente,Facturaguia,Tipo,Tamano,Cantidad,NombreCertificador,ApellidoCertificador) " +
+                "values   (0,0, @FechaAprovacion, @CamaraCodigo, @Cliente, " +
+                " @RutCliente,@GiroCliente,@DireccionCliente,@Facturaguia,@Tipo,@Tamano,@Cantidad,@NombreCertificador,@ApellidoCertificador) ";
+
+
+            Command.Parameters.AddWithValue("@FechaAprovacion", fecha);
+            Command.Parameters.AddWithValue("@CamaraCodigo", codigocamara);
+            Command.Parameters.AddWithValue("@Cliente", Cliente);
+            Command.Parameters.AddWithValue("@RutCliente", rutclient);
+            Command.Parameters.AddWithValue("@GiroCliente", giroclient);
+            Command.Parameters.AddWithValue("@DireccionCliente", direccionclient);
+            Command.Parameters.AddWithValue("@Facturaguia", facturaguia);
+            Command.Parameters.AddWithValue("@Tipo", tipo);
+            Command.Parameters.AddWithValue("@Tamano", tamano);
+            Command.Parameters.AddWithValue("@Cantidad", cantidad);
+            Command.Parameters.AddWithValue("@NombreCertificador", nombrecert);
+            Command.Parameters.AddWithValue("@ApellidoCertificador", apellidocert);
+
+            SQLiteDataReader query = Command.ExecuteReader();
+
+            while (query.Read())
+            {
+                Console.WriteLine(query.GetString(0));
+
+            }
+
+            m_dbConnection.Close();
+
+            //**************************************************************************************************
+            m_dbConnection.Open();
+
+            Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "SELECT Certificacion_id from Certificacion order by Certificacion_id DESC limit 1";
+            query = Command.ExecuteReader();
+
+            while (query.Read())
+            {
+                Certificacion_id = query.GetInt16(0);
+            }
+
+            m_dbConnection.Close();
+
+
+            DateTime fechainicio = DateTime.Parse(fecha+" "+hora);
+
+
+            generaGrafico(Certificacion_id, fechainicio);
+
+        }
+
+        public void generaGrafico(int certificacionid, DateTime fechainicio) {
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+
+            Random rnd = new Random();
+
+            int sensor1Tem = 0;
+            int sensor2Tem = 0;
+            int sensor3Tem = 0;
+
+            int sensoren56 = rnd.Next(1, 4);
+            int partidaSensorI = rnd.Next(1, 11) + 56;
+            int partidaSensorII = rnd.Next(1, 11) + 56;
+
+            if (sensoren56 == 1) { sensor1Tem = 56; sensor2Tem = partidaSensorI; sensor3Tem = partidaSensorII; }
+            if (sensoren56 == 2) { sensor2Tem = 56; sensor3Tem = partidaSensorI; sensor1Tem = partidaSensorII; }
+            if (sensoren56 == 3) { sensor3Tem = 56; sensor2Tem = partidaSensorI; sensor1Tem = partidaSensorII; }
+
+            /*
+            LineaCertificacion_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "Certificacion_id INTEGER, " +
+                    "enCertificacion integer, " +
+                    "Sensor1 real, Sensor2 real, Sensor3 real, Fecha datetime," +
+                    "FOREIGN KEY(Certificacion_id) REFERENCES Certificacion(Certificacion_id)) ";
+                    */
+
+
+            for (int i = 0; i < 45; i++)
+            {
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "insert into LineaCertificacion(Certificacion_id, enCertificacion,Sensor1,Sensor2,Sensor3,Fecha ) values" +
+                    "(@Certificacion_id, @enCertificacion,@Sensor1,@Sensor2,@Sensor3,@Fecha ) ";
+
+                Command.Parameters.AddWithValue("@Certificacion_id", certificacionid);
+                Command.Parameters.AddWithValue("@enCertificacion", 1);
+                Command.Parameters.AddWithValue("@Sensor1", sensor1Tem);
+                Command.Parameters.AddWithValue("@Sensor2", sensor2Tem);
+                Command.Parameters.AddWithValue("@Sensor3", sensor3Tem);
+                Command.Parameters.AddWithValue("@Fecha", fechainicio);
+
+
+                sensor1Tem= rnd.Next(0, 2)+ sensor1Tem;
+                sensor2Tem = rnd.Next(0, 2)+ sensor2Tem;
+                sensor3Tem = rnd.Next(0, 2)+ sensor3Tem;
+
+
+                fechainicio=fechainicio.AddMinutes(1);
+            }
+
         }
 
         private void button1Limpiargeneracion_Click(object sender, EventArgs e)
