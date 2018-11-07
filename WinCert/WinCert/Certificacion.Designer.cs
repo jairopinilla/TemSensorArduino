@@ -30,10 +30,8 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Grafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -92,7 +90,7 @@
             this.label8GeneraCliente = new System.Windows.Forms.Label();
             this.label8GeneraCamara = new System.Windows.Forms.Label();
             this.dateTimePicker1generaciontime = new System.Windows.Forms.DateTimePicker();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart1GraficoGenera = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1Limpiargeneracion = new System.Windows.Forms.Button();
             this.button1Generar = new System.Windows.Forms.Button();
             this.dateTimePicker1InicioGeneracion = new System.Windows.Forms.DateTimePicker();
@@ -102,6 +100,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1generaImprimir = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15certificacionIdGenera = new System.Windows.Forms.Label();
+            this.label15fechaGeenera = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24facturaguiagenera = new System.Windows.Forms.Label();
+            this.label24tipogenera = new System.Windows.Forms.Label();
+            this.label24cantidadgenera = new System.Windows.Forms.Label();
+            this.label24tamanogenera = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grafico)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -112,8 +134,11 @@
             this.Camara.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1Camara)).BeginInit();
             this.tabPage4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1GraficoGenera)).BeginInit();
+            this.panel1generaImprimir.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -152,10 +177,6 @@
             this.Grafico.MinimumSize = new System.Drawing.Size(700, 400);
             this.Grafico.Name = "Grafico";
             this.Grafico.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Grafico.Series.Add(series1);
             this.Grafico.Size = new System.Drawing.Size(800, 600);
             this.Grafico.TabIndex = 1;
             this.Grafico.Text = "chart1";
@@ -171,12 +192,12 @@
             this.tabControl1.Controls.Add(this.Camara);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tabControl1.Location = new System.Drawing.Point(6, 48);
+            this.tabControl1.Location = new System.Drawing.Point(6, 55);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(30);
             this.tabControl1.MinimumSize = new System.Drawing.Size(850, 650);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(900, 650);
+            this.tabControl1.Size = new System.Drawing.Size(1161, 832);
             this.tabControl1.TabIndex = 1;
             // 
             // Cliente
@@ -535,6 +556,7 @@
             // tabPage4
             // 
             this.tabPage4.AccessibleName = "GeneracionTab";
+            this.tabPage4.Controls.Add(this.panel1generaImprimir);
             this.tabPage4.Controls.Add(this.label8AdvertenciaGeneracion);
             this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.label9);
@@ -545,9 +567,7 @@
             this.tabPage4.Controls.Add(this.textBox1GeneraTipo);
             this.tabPage4.Controls.Add(this.textBox1GEneraFacturaGuia);
             this.tabPage4.Controls.Add(this.button1VerReporte);
-            this.tabPage4.Controls.Add(this.groupBox1);
             this.tabPage4.Controls.Add(this.dateTimePicker1generaciontime);
-            this.tabPage4.Controls.Add(this.chart1);
             this.tabPage4.Controls.Add(this.button1Limpiargeneracion);
             this.tabPage4.Controls.Add(this.button1Generar);
             this.tabPage4.Controls.Add(this.dateTimePicker1InicioGeneracion);
@@ -556,7 +576,7 @@
             this.tabPage4.Controls.Add(this.comboBox1Cliente);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(892, 624);
+            this.tabPage4.Size = new System.Drawing.Size(1153, 806);
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "Generacion";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -639,33 +659,25 @@
             // 
             // button1VerReporte
             // 
-            this.button1VerReporte.Location = new System.Drawing.Point(805, 362);
+            this.button1VerReporte.Location = new System.Drawing.Point(827, 162);
             this.button1VerReporte.Name = "button1VerReporte";
-            this.button1VerReporte.Size = new System.Drawing.Size(75, 23);
+            this.button1VerReporte.Size = new System.Drawing.Size(106, 23);
             this.button1VerReporte.TabIndex = 11;
             this.button1VerReporte.Text = "Ver Reporte";
             this.button1VerReporte.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label8GeneraApellido);
-            this.groupBox1.Controls.Add(this.label8GeneraNombreCert);
-            this.groupBox1.Controls.Add(this.label8GeneraDireccion);
-            this.groupBox1.Controls.Add(this.label8GeneraGiro);
-            this.groupBox1.Controls.Add(this.label8GeneraRut);
-            this.groupBox1.Controls.Add(this.label8GeneraCliente);
-            this.groupBox1.Controls.Add(this.label8GeneraCamara);
-            this.groupBox1.Location = new System.Drawing.Point(638, 117);
+            this.groupBox1.Location = new System.Drawing.Point(459, 733);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 239);
+            this.groupBox1.Size = new System.Drawing.Size(242, 65);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos Generados";
             // 
             // label8GeneraApellido
             // 
             this.label8GeneraApellido.AutoSize = true;
-            this.label8GeneraApellido.Location = new System.Drawing.Point(12, 185);
+            this.label8GeneraApellido.Location = new System.Drawing.Point(522, 813);
             this.label8GeneraApellido.Name = "label8GeneraApellido";
             this.label8GeneraApellido.Size = new System.Drawing.Size(44, 13);
             this.label8GeneraApellido.TabIndex = 6;
@@ -674,7 +686,7 @@
             // label8GeneraNombreCert
             // 
             this.label8GeneraNombreCert.AutoSize = true;
-            this.label8GeneraNombreCert.Location = new System.Drawing.Point(13, 156);
+            this.label8GeneraNombreCert.Location = new System.Drawing.Point(456, 813);
             this.label8GeneraNombreCert.Name = "label8GeneraNombreCert";
             this.label8GeneraNombreCert.Size = new System.Drawing.Size(44, 13);
             this.label8GeneraNombreCert.TabIndex = 5;
@@ -683,7 +695,7 @@
             // label8GeneraDireccion
             // 
             this.label8GeneraDireccion.AutoSize = true;
-            this.label8GeneraDireccion.Location = new System.Drawing.Point(13, 129);
+            this.label8GeneraDireccion.Location = new System.Drawing.Point(130, 89);
             this.label8GeneraDireccion.Name = "label8GeneraDireccion";
             this.label8GeneraDireccion.Size = new System.Drawing.Size(52, 13);
             this.label8GeneraDireccion.TabIndex = 4;
@@ -692,7 +704,7 @@
             // label8GeneraGiro
             // 
             this.label8GeneraGiro.AutoSize = true;
-            this.label8GeneraGiro.Location = new System.Drawing.Point(13, 103);
+            this.label8GeneraGiro.Location = new System.Drawing.Point(482, 11);
             this.label8GeneraGiro.Name = "label8GeneraGiro";
             this.label8GeneraGiro.Size = new System.Drawing.Size(26, 13);
             this.label8GeneraGiro.TabIndex = 3;
@@ -701,7 +713,7 @@
             // label8GeneraRut
             // 
             this.label8GeneraRut.AutoSize = true;
-            this.label8GeneraRut.Location = new System.Drawing.Point(13, 77);
+            this.label8GeneraRut.Location = new System.Drawing.Point(130, 65);
             this.label8GeneraRut.Name = "label8GeneraRut";
             this.label8GeneraRut.Size = new System.Drawing.Size(24, 13);
             this.label8GeneraRut.TabIndex = 2;
@@ -710,7 +722,7 @@
             // label8GeneraCliente
             // 
             this.label8GeneraCliente.AutoSize = true;
-            this.label8GeneraCliente.Location = new System.Drawing.Point(13, 50);
+            this.label8GeneraCliente.Location = new System.Drawing.Point(130, 35);
             this.label8GeneraCliente.Name = "label8GeneraCliente";
             this.label8GeneraCliente.Size = new System.Drawing.Size(39, 13);
             this.label8GeneraCliente.TabIndex = 1;
@@ -719,7 +731,7 @@
             // label8GeneraCamara
             // 
             this.label8GeneraCamara.AutoSize = true;
-            this.label8GeneraCamara.Location = new System.Drawing.Point(13, 26);
+            this.label8GeneraCamara.Location = new System.Drawing.Point(130, 11);
             this.label8GeneraCamara.Name = "label8GeneraCamara";
             this.label8GeneraCamara.Size = new System.Drawing.Size(43, 13);
             this.label8GeneraCamara.TabIndex = 0;
@@ -735,23 +747,19 @@
             this.dateTimePicker1generaciontime.Size = new System.Drawing.Size(87, 20);
             this.dateTimePicker1generaciontime.TabIndex = 9;
             // 
-            // chart1
+            // chart1GraficoGenera
             // 
-            this.chart1.BorderlineColor = System.Drawing.Color.Black;
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            this.chart1GraficoGenera.BorderlineColor = System.Drawing.Color.Black;
+            this.chart1GraficoGenera.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1GraficoGenera.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(18, 117);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(610, 482);
-            this.chart1.TabIndex = 7;
-            this.chart1.Text = "chart1";
+            this.chart1GraficoGenera.Legends.Add(legend2);
+            this.chart1GraficoGenera.Location = new System.Drawing.Point(48, 311);
+            this.chart1GraficoGenera.Name = "chart1GraficoGenera";
+            this.chart1GraficoGenera.Size = new System.Drawing.Size(653, 404);
+            this.chart1GraficoGenera.TabIndex = 7;
+            this.chart1GraficoGenera.Text = "chart1";
             // 
             // button1Limpiargeneracion
             // 
@@ -765,9 +773,9 @@
             // 
             // button1Generar
             // 
-            this.button1Generar.Location = new System.Drawing.Point(710, 79);
+            this.button1Generar.Location = new System.Drawing.Point(701, 79);
             this.button1Generar.Name = "button1Generar";
-            this.button1Generar.Size = new System.Drawing.Size(166, 23);
+            this.button1Generar.Size = new System.Drawing.Size(106, 23);
             this.button1Generar.TabIndex = 5;
             this.button1Generar.Text = "Generar";
             this.button1Generar.UseVisualStyleBackColor = true;
@@ -851,16 +859,297 @@
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // panel1generaImprimir
+            // 
+            this.panel1generaImprimir.AutoScroll = true;
+            this.panel1generaImprimir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1generaImprimir.Controls.Add(this.label8GeneraApellido);
+            this.panel1generaImprimir.Controls.Add(this.label24);
+            this.panel1generaImprimir.Controls.Add(this.label8GeneraNombreCert);
+            this.panel1generaImprimir.Controls.Add(this.tableLayoutPanel3);
+            this.panel1generaImprimir.Controls.Add(this.tableLayoutPanel2);
+            this.panel1generaImprimir.Controls.Add(this.tableLayoutPanel1);
+            this.panel1generaImprimir.Controls.Add(this.label12);
+            this.panel1generaImprimir.Controls.Add(this.label11);
+            this.panel1generaImprimir.Controls.Add(this.chart1GraficoGenera);
+            this.panel1generaImprimir.Controls.Add(this.groupBox1);
+            this.panel1generaImprimir.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.panel1generaImprimir.Location = new System.Drawing.Point(21, 133);
+            this.panel1generaImprimir.Name = "panel1generaImprimir";
+            this.panel1generaImprimir.Size = new System.Drawing.Size(792, 612);
+            this.panel1generaImprimir.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(33, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(150, 25);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "ECOMAD SpA";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(199, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(420, 24);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Certificado de Tratamiento Fitosanatario NIIMF 15";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Revision";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.72526F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.27474F));
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label15certificacionIdGenera, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label15fechaGeenera, 1, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(38, 59);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.80851F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.19149F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 71);
+            this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(129, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Fecha Aprobacion";
+            // 
+            // label15certificacionIdGenera
+            // 
+            this.label15certificacionIdGenera.AutoSize = true;
+            this.label15certificacionIdGenera.Location = new System.Drawing.Point(14, 34);
+            this.label15certificacionIdGenera.Name = "label15certificacionIdGenera";
+            this.label15certificacionIdGenera.Size = new System.Drawing.Size(41, 13);
+            this.label15certificacionIdGenera.TabIndex = 12;
+            this.label15certificacionIdGenera.Text = "label15";
+            // 
+            // label15fechaGeenera
+            // 
+            this.label15fechaGeenera.AutoSize = true;
+            this.label15fechaGeenera.Location = new System.Drawing.Point(129, 34);
+            this.label15fechaGeenera.Name = "label15fechaGeenera";
+            this.label15fechaGeenera.Size = new System.Drawing.Size(41, 13);
+            this.label15fechaGeenera.TabIndex = 13;
+            this.label15fechaGeenera.Text = "label15";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.87071F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.12929F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label16, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label8GeneraGiro, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label8GeneraDireccion, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label17, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label18, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label8GeneraRut, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label8GeneraCamara, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label8GeneraCliente, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label19, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(38, 121);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.26229F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.73771F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(671, 124);
+            this.tableLayoutPanel2.TabIndex = 12;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 11);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Camara";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 35);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Cliente";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 65);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(24, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Rut";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(14, 89);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(52, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Direccion";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(390, 11);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(26, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Giro";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.89005F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.10995F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
+            this.tableLayoutPanel3.Controls.Add(this.label20, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label21, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label22, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label23, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label24facturaguiagenera, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label24tipogenera, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label24cantidadgenera, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label24tamanogenera, 3, 1);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(48, 251);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.11111F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.88889F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(653, 46);
+            this.tableLayoutPanel3.TabIndex = 13;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(4, 1);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(68, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Factura Guia";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(121, 1);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(28, 13);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Tipo";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(382, 1);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(49, 13);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Cantidad";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(472, 1);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(46, 13);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Tamano";
+            // 
+            // label24facturaguiagenera
+            // 
+            this.label24facturaguiagenera.AutoSize = true;
+            this.label24facturaguiagenera.Location = new System.Drawing.Point(4, 23);
+            this.label24facturaguiagenera.Name = "label24facturaguiagenera";
+            this.label24facturaguiagenera.Size = new System.Drawing.Size(41, 13);
+            this.label24facturaguiagenera.TabIndex = 4;
+            this.label24facturaguiagenera.Text = "label24";
+            // 
+            // label24tipogenera
+            // 
+            this.label24tipogenera.AutoSize = true;
+            this.label24tipogenera.Location = new System.Drawing.Point(121, 23);
+            this.label24tipogenera.Name = "label24tipogenera";
+            this.label24tipogenera.Size = new System.Drawing.Size(41, 13);
+            this.label24tipogenera.TabIndex = 5;
+            this.label24tipogenera.Text = "label24";
+            // 
+            // label24cantidadgenera
+            // 
+            this.label24cantidadgenera.AutoSize = true;
+            this.label24cantidadgenera.Location = new System.Drawing.Point(382, 23);
+            this.label24cantidadgenera.Name = "label24cantidadgenera";
+            this.label24cantidadgenera.Size = new System.Drawing.Size(41, 13);
+            this.label24cantidadgenera.TabIndex = 6;
+            this.label24cantidadgenera.Text = "label24";
+            // 
+            // label24tamanogenera
+            // 
+            this.label24tamanogenera.AutoSize = true;
+            this.label24tamanogenera.Location = new System.Drawing.Point(472, 23);
+            this.label24tamanogenera.Name = "label24tamanogenera";
+            this.label24tamanogenera.Size = new System.Drawing.Size(41, 13);
+            this.label24tamanogenera.TabIndex = 7;
+            this.label24tamanogenera.Text = "label24";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(717, 870);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(41, 13);
+            this.label24.TabIndex = 14;
+            this.label24.Text = "label24";
+            // 
             // Certificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 713);
+            this.ClientSize = new System.Drawing.Size(1184, 915);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MinimumSize = new System.Drawing.Size(900, 700);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Certificacion";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.Text = "Certificacion";
@@ -880,9 +1169,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1Camara)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1GraficoGenera)).EndInit();
+            this.panel1generaImprimir.ResumeLayout(false);
+            this.panel1generaImprimir.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -934,7 +1229,7 @@
         private System.Windows.Forms.ComboBox comboBox1Certificador;
         private System.Windows.Forms.ComboBox comboBox1Camara;
         private System.Windows.Forms.ComboBox comboBox1Cliente;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1GraficoGenera;
         private System.Windows.Forms.Button button1Limpiargeneracion;
         private System.Windows.Forms.Button button1Generar;
         private System.Windows.Forms.DateTimePicker dateTimePicker1InicioGeneracion;
@@ -958,5 +1253,29 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8AdvertenciaGeneracion;
+        private System.Windows.Forms.Panel panel1generaImprimir;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15certificacionIdGenera;
+        private System.Windows.Forms.Label label15fechaGeenera;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24facturaguiagenera;
+        private System.Windows.Forms.Label label24tipogenera;
+        private System.Windows.Forms.Label label24cantidadgenera;
+        private System.Windows.Forms.Label label24tamanogenera;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }

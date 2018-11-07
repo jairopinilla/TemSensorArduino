@@ -31,6 +31,7 @@ namespace WinCert
         DataTable dtCamaras = new DataTable();
         DataTable dtClientes = new DataTable();
         DataTable dtCertificadores = new DataTable();
+        DataTable dtLineaTemperaturasGenera = new DataTable();
 
 
         public Certificacion()
@@ -48,6 +49,26 @@ namespace WinCert
             ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             ArduinoPort.Open();
+
+
+            /**************************************************************/
+
+            chart1GraficoGenera.Series.Add("Sensor 1");
+            chart1GraficoGenera.Series.Add("Sensor 2");
+            chart1GraficoGenera.Series.Add("Sensor 3");
+
+            chart1GraficoGenera.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
+            chart1GraficoGenera.Series["Sensor 1"].Color = Color.Red;
+
+            chart1GraficoGenera.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
+            chart1GraficoGenera.Series["Sensor 2"].Color = Color.Blue;
+
+            chart1GraficoGenera.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
+            chart1GraficoGenera.Series["Sensor 3"].Color = Color.Green;
+
+            chart1GraficoGenera.Series["Sensor 1"].XValueType = ChartValueType.Time;
+            chart1GraficoGenera.Series["Sensor 2"].XValueType = ChartValueType.Time;
+            chart1GraficoGenera.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
 
             /**************************************************************/
@@ -91,6 +112,41 @@ namespace WinCert
             comboBox1Cliente.DataSource = dtClientes;
 
             label8AdvertenciaGeneracion.Text = "";
+        }
+
+        public void actualizaGraficoGenera(int certificaid) {
+
+            //*********************************************************
+
+            SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            conexion.Open();
+            string consulta = "select * from LineaCertificacion where Certificacion_id="+certificaid;
+            SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
+
+            DataSet ds = new DataSet();
+            ds.Reset();
+
+            dtCamaras = new DataTable();
+            db.Fill(ds);
+
+            dtLineaTemperaturasGenera = ds.Tables[0];
+            chart1GraficoGenera.DataSource = dtLineaTemperaturasGenera;
+
+            conexion.Close();
+
+            //******************************************************
+
+
+            chart1GraficoGenera.Series["Sensor 1"].XValueMember = "Fecha";
+            chart1GraficoGenera.Series["Sensor 2"].XValueMember = "Fecha";
+            chart1GraficoGenera.Series["Sensor 3"].XValueMember = "Fecha";
+
+            chart1GraficoGenera.Series["Sensor 1"].YValueMembers = "Sensor1";
+            chart1GraficoGenera.Series["Sensor 2"].YValueMembers = "Sensor2";
+            chart1GraficoGenera.Series["Sensor 3"].YValueMembers = "Sensor3";
+
+            chart1GraficoGenera.DataBind();
+
         }
 
         public void ActualizarListaCamaras()
@@ -833,9 +889,14 @@ namespace WinCert
                 sensor2Tem = rnd.Next(0, 2)+ sensor2Tem;
                 sensor3Tem = rnd.Next(0, 2)+ sensor3Tem;
 
+                SQLiteDataReader query = Command.ExecuteReader();
+                dtLineaTemperaturasGenera.Load(query);
 
-                fechainicio=fechainicio.AddMinutes(1);
+                fechainicio =fechainicio.AddMinutes(1);
             }
+
+
+            actualizaGraficoGenera(certificacionid);
 
         }
 
@@ -845,6 +906,11 @@ namespace WinCert
         }
 
         private void textBox1GeneraTamano_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
