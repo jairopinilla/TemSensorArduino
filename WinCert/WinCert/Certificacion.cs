@@ -42,6 +42,9 @@ namespace WinCert
         private void Certificacion_Load(object sender, EventArgs e)
         {
 
+            button1VerReporte.Enabled = false; 
+
+            /*
             ArduinoPort = new System.IO.Ports.SerialPort();
             ArduinoPort.PortName = "COM4";  //sustituir por vuestro 
             ArduinoPort.BaudRate = 9600;
@@ -49,7 +52,7 @@ namespace WinCert
             ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             ArduinoPort.Open();
-
+            */
 
             /**************************************************************/
 
@@ -676,6 +679,8 @@ namespace WinCert
 
         private void button1Generar_Click(object sender, EventArgs e)
         {
+           
+            button1VerReporte.Enabled = false;
 
             label8AdvertenciaGeneracion.Text = "";
 
@@ -714,7 +719,7 @@ namespace WinCert
                 string girocliente = "";
                 string direccioncliente = "";
 
-
+                button1VerReporte.Enabled = true;
                 //----------------------------------------------------------------------
 
 
@@ -755,14 +760,7 @@ namespace WinCert
 
                 //------------------------------------------------------------------
 
-                label8GeneraCamara.Text = codigocamara;
-                label8GeneraCliente.Text = nombrecliente;
-                label8GeneraRut.Text = rutcliente;
-                label8GeneraGiro.Text = girocliente;
-                label8GeneraDireccion.Text = direccioncliente;
-                label8GeneraNombreCert.Text = nombrecertificador;
-                label8GeneraApellido.Text = apellidocertificador;
-
+ 
 
 
                 label8AdvertenciaGeneracion.Text = "";
@@ -913,6 +911,14 @@ namespace WinCert
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1VerReporte_Click(object sender, EventArgs e)
+        {
+            FormularioCertificado formulario = new FormularioCertificado("client","hola");
+            formulario.Show();
+
+            
         }
     }
 }

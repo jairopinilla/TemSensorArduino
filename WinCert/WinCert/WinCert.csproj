@@ -73,6 +73,12 @@
       <DependentUpon>Certificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Certificador.cs" />
+    <Compile Include="FormularioCertificado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioCertificado.Designer.cs">
+      <DependentUpon>FormularioCertificado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Certificacion.resx">
       <DependentUpon>Certificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioCertificado.resx">
+      <DependentUpon>FormularioCertificado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
