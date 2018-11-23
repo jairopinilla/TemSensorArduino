@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1ActualizarCer = new System.Windows.Forms.Button();
+            this.dataGridViewCertificaciones = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Grafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -73,6 +75,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label8AdvertenciaGeneracion = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.chart1GraficoGenera = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -91,7 +94,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.chart1GraficoGenera = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label11certadver = new System.Windows.Forms.Label();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertificaciones)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grafico)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -107,6 +113,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label11certadver);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.button1ActualizarCer);
+            this.tabPage2.Controls.Add(this.dataGridViewCertificaciones);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -114,6 +124,29 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Certificaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button1ActualizarCer
+            // 
+            this.button1ActualizarCer.Location = new System.Drawing.Point(29, 23);
+            this.button1ActualizarCer.Name = "button1ActualizarCer";
+            this.button1ActualizarCer.Size = new System.Drawing.Size(141, 23);
+            this.button1ActualizarCer.TabIndex = 1;
+            this.button1ActualizarCer.Text = "Actualizar";
+            this.button1ActualizarCer.UseVisualStyleBackColor = true;
+            this.button1ActualizarCer.Click += new System.EventHandler(this.button1ActualizarCer_Click);
+            // 
+            // dataGridViewCertificaciones
+            // 
+            this.dataGridViewCertificaciones.AllowUserToAddRows = false;
+            this.dataGridViewCertificaciones.AllowUserToDeleteRows = false;
+            this.dataGridViewCertificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCertificaciones.Location = new System.Drawing.Point(29, 61);
+            this.dataGridViewCertificaciones.MultiSelect = false;
+            this.dataGridViewCertificaciones.Name = "dataGridViewCertificaciones";
+            this.dataGridViewCertificaciones.ReadOnly = true;
+            this.dataGridViewCertificaciones.Size = new System.Drawing.Size(1061, 716);
+            this.dataGridViewCertificaciones.TabIndex = 0;
+            this.dataGridViewCertificaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tabPage1
             // 
@@ -133,10 +166,10 @@
             this.Grafico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.Grafico.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.Grafico.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.Grafico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Grafico.Legends.Add(legend1);
             this.Grafico.Location = new System.Drawing.Point(3, 3);
             this.Grafico.MinimumSize = new System.Drawing.Size(700, 400);
             this.Grafico.Name = "Grafico";
@@ -149,12 +182,12 @@
             // 
             this.tabControl1.AccessibleDescription = "";
             this.tabControl1.AccessibleName = "tab1";
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.Cliente);
             this.tabControl1.Controls.Add(this.Certificador);
             this.tabControl1.Controls.Add(this.Camara);
-            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.Location = new System.Drawing.Point(6, 55);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(30);
@@ -500,6 +533,7 @@
             this.dataGridView1Camara.ReadOnly = true;
             this.dataGridView1Camara.Size = new System.Drawing.Size(816, 492);
             this.dataGridView1Camara.TabIndex = 2;
+            this.dataGridView1Camara.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1Camara_CellContentClick);
             // 
             // textBox1codigoCamara
             // 
@@ -565,6 +599,20 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Cantidad";
             // 
+            // chart1GraficoGenera
+            // 
+            this.chart1GraficoGenera.BorderlineColor = System.Drawing.Color.Black;
+            this.chart1GraficoGenera.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.Name = "ChartArea1";
+            this.chart1GraficoGenera.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1GraficoGenera.Legends.Add(legend2);
+            this.chart1GraficoGenera.Location = new System.Drawing.Point(21, 200);
+            this.chart1GraficoGenera.Name = "chart1GraficoGenera";
+            this.chart1GraficoGenera.Size = new System.Drawing.Size(831, 567);
+            this.chart1GraficoGenera.TabIndex = 7;
+            this.chart1GraficoGenera.Text = "chart1";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -598,6 +646,8 @@
             this.textBox1GeneraCantidad.Name = "textBox1GeneraCantidad";
             this.textBox1GeneraCantidad.Size = new System.Drawing.Size(150, 20);
             this.textBox1GeneraCantidad.TabIndex = 15;
+            this.textBox1GeneraCantidad.TextChanged += new System.EventHandler(this.textBox1GeneraCantidad_TextChanged);
+            this.textBox1GeneraCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1GeneraCantidad_KeyPress);
             // 
             // textBox1GeneraTamano
             // 
@@ -739,19 +789,24 @@
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // chart1GraficoGenera
+            // button1
             // 
-            this.chart1GraficoGenera.BorderlineColor = System.Drawing.Color.Black;
-            this.chart1GraficoGenera.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea4.Name = "ChartArea1";
-            this.chart1GraficoGenera.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1GraficoGenera.Legends.Add(legend4);
-            this.chart1GraficoGenera.Location = new System.Drawing.Point(21, 200);
-            this.chart1GraficoGenera.Name = "chart1GraficoGenera";
-            this.chart1GraficoGenera.Size = new System.Drawing.Size(831, 567);
-            this.chart1GraficoGenera.TabIndex = 7;
-            this.chart1GraficoGenera.Text = "chart1";
+            this.button1.Location = new System.Drawing.Point(186, 23);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Ver Reporte";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label11certadver
+            // 
+            this.label11certadver.AutoSize = true;
+            this.label11certadver.ForeColor = System.Drawing.Color.Red;
+            this.label11certadver.Location = new System.Drawing.Point(346, 28);
+            this.label11certadver.Name = "label11certadver";
+            this.label11certadver.Size = new System.Drawing.Size(0, 13);
+            this.label11certadver.TabIndex = 3;
             // 
             // Certificacion
             // 
@@ -768,6 +823,9 @@
             this.Text = "Certificacion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Certificacion_Load);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertificaciones)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grafico)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -850,5 +908,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8AdvertenciaGeneracion;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1GraficoGenera;
+        private System.Windows.Forms.DataGridView dataGridViewCertificaciones;
+        private System.Windows.Forms.Button button1ActualizarCer;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11certadver;
     }
 }

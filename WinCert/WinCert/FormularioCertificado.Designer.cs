@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panelCertificado = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -39,20 +40,13 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.labelGiro = new System.Windows.Forms.Label();
-            this.labeldireccion = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.labelCamara = new System.Windows.Forms.Label();
-            this.labelCliente = new System.Windows.Forms.Label();
-            this.labelRut = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.labelRevision = new System.Windows.Forms.Label();
-            this.labelFechaAprobacion = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -60,10 +54,22 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelGrafico = new System.Windows.Forms.Panel();
             this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.labelfacturaguia = new System.Windows.Forms.Label();
-            this.labeltipo = new System.Windows.Forms.Label();
-            this.labeltamano = new System.Windows.Forms.Label();
-            this.labelcantidad = new System.Windows.Forms.Label();
+            this.textBox2Revision = new System.Windows.Forms.TextBox();
+            this.textBox2FechaAprobacion = new System.Windows.Forms.TextBox();
+            this.textBox2Camara = new System.Windows.Forms.TextBox();
+            this.textBox2Cliente = new System.Windows.Forms.TextBox();
+            this.textBox2Rut = new System.Windows.Forms.TextBox();
+            this.textBox2Giro = new System.Windows.Forms.TextBox();
+            this.textBox2Direccion = new System.Windows.Forms.TextBox();
+            this.textBox2FacturaGuia = new System.Windows.Forms.TextBox();
+            this.textBox2Tipo = new System.Windows.Forms.TextBox();
+            this.textBox2Tamano = new System.Windows.Forms.TextBox();
+            this.textBox2Cantidad = new System.Windows.Forms.TextBox();
+            this.textBox2nombrecert = new System.Windows.Forms.TextBox();
+            this.textBox2ApellidoCert = new System.Windows.Forms.TextBox();
+            this.button1Guardar = new System.Windows.Forms.Button();
+            this.button1imprimir = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelCertificado.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -82,6 +88,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCertificado.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelCertificado.Controls.Add(this.textBox2ApellidoCert);
+            this.panelCertificado.Controls.Add(this.textBox2nombrecert);
+            this.panelCertificado.Controls.Add(this.textBox1);
             this.panelCertificado.Controls.Add(this.tableLayoutPanel4);
             this.panelCertificado.Controls.Add(this.tableLayoutPanel3);
             this.panelCertificado.Controls.Add(this.tableLayoutPanel2);
@@ -97,6 +106,19 @@
             this.panelCertificado.Size = new System.Drawing.Size(612, 792);
             this.panelCertificado.TabIndex = 0;
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(117, 684);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(332, 75);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "ECOMAD S.p.A Comercializadora de Maderas y Embalajes Direccion 10 Poniente Parcel" +
+    "a N 263 Lote C Paine";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -104,15 +126,15 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.24657F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.75343F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel4.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label13, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.label14, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.labelfacturaguia, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.labeltipo, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.labeltamano, 2, 1);
-            this.tableLayoutPanel4.Controls.Add(this.labelcantidad, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox2FacturaGuia, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox2Tipo, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox2Tamano, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox2Cantidad, 3, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(33, 290);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(3);
@@ -125,36 +147,40 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(7, 4);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 13);
+            this.label11.Size = new System.Drawing.Size(82, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Factura/Guia";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(101, 4);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(100, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 13);
+            this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 1;
             this.label12.Text = "Tipo";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(280, 4);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(278, 4);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 2;
             this.label13.Text = "Tamaño";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(455, 4);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(453, 4);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 13);
+            this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 3;
             this.label14.Text = "Cantidad";
             // 
@@ -165,8 +191,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.labelGiro, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.labeldireccion, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.textBox2Giro, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.textBox2Direccion, 0, 3);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(312, 164);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(3);
@@ -181,38 +207,22 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(7, 4);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 13);
+            this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 0;
             this.label9.Text = "Giro";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(7, 61);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 1;
             this.label10.Text = "Direccion";
-            // 
-            // labelGiro
-            // 
-            this.labelGiro.AutoSize = true;
-            this.labelGiro.Location = new System.Drawing.Point(7, 33);
-            this.labelGiro.Name = "labelGiro";
-            this.labelGiro.Size = new System.Drawing.Size(41, 13);
-            this.labelGiro.TabIndex = 2;
-            this.labelGiro.Text = "label15";
-            // 
-            // labeldireccion
-            // 
-            this.labeldireccion.AutoSize = true;
-            this.labeldireccion.Location = new System.Drawing.Point(7, 89);
-            this.labeldireccion.Name = "labeldireccion";
-            this.labeldireccion.Size = new System.Drawing.Size(74, 13);
-            this.labeldireccion.TabIndex = 3;
-            this.labeldireccion.Text = "labelDireccion";
             // 
             // tableLayoutPanel2
             // 
@@ -223,9 +233,9 @@
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label7, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.labelCamara, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.labelCliente, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.labelRut, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.textBox2Camara, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBox2Cliente, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.textBox2Rut, 1, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(33, 164);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(3);
@@ -239,56 +249,32 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(7, 4);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Camara";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(7, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Cliente";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(7, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 2;
             this.label7.Text = "Rut";
-            // 
-            // labelCamara
-            // 
-            this.labelCamara.AutoSize = true;
-            this.labelCamara.Location = new System.Drawing.Point(81, 4);
-            this.labelCamara.Name = "labelCamara";
-            this.labelCamara.Size = new System.Drawing.Size(41, 13);
-            this.labelCamara.TabIndex = 4;
-            this.labelCamara.Text = "label15";
-            // 
-            // labelCliente
-            // 
-            this.labelCliente.AutoSize = true;
-            this.labelCliente.Location = new System.Drawing.Point(81, 32);
-            this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(41, 13);
-            this.labelCliente.TabIndex = 5;
-            this.labelCliente.Text = "label15";
-            // 
-            // labelRut
-            // 
-            this.labelRut.AutoSize = true;
-            this.labelRut.Location = new System.Drawing.Point(81, 58);
-            this.labelRut.Name = "labelRut";
-            this.labelRut.Size = new System.Drawing.Size(41, 13);
-            this.labelRut.TabIndex = 6;
-            this.labelRut.Text = "label15";
             // 
             // tableLayoutPanel1
             // 
@@ -298,8 +284,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labelRevision, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelFechaAprobacion, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox2Revision, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox2FechaAprobacion, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(33, 91);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(3);
@@ -312,54 +298,40 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(7, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Revision";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(276, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Fecha Aprobacion";
-            // 
-            // labelRevision
-            // 
-            this.labelRevision.AutoSize = true;
-            this.labelRevision.Location = new System.Drawing.Point(7, 34);
-            this.labelRevision.Name = "labelRevision";
-            this.labelRevision.Size = new System.Drawing.Size(41, 13);
-            this.labelRevision.TabIndex = 2;
-            this.labelRevision.Text = "label15";
-            // 
-            // labelFechaAprobacion
-            // 
-            this.labelFechaAprobacion.AutoSize = true;
-            this.labelFechaAprobacion.Location = new System.Drawing.Point(276, 34);
-            this.labelFechaAprobacion.Name = "labelFechaAprobacion";
-            this.labelFechaAprobacion.Size = new System.Drawing.Size(41, 13);
-            this.labelFechaAprobacion.TabIndex = 3;
-            this.labelFechaAprobacion.Text = "label15";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(135, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(313, 13);
+            this.label2.Size = new System.Drawing.Size(362, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "CERTIFICADO DE TRATAMIENTO FITOSANATARIO NIIMF 15";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(236, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "ECOMAD S.p.A";
             // 
@@ -408,51 +380,153 @@
             // 
             // chartGrafico
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartGrafico.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartGrafico.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chartGrafico.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartGrafico.Legends.Add(legend6);
             this.chartGrafico.Location = new System.Drawing.Point(22, 23);
             this.chartGrafico.Name = "chartGrafico";
             this.chartGrafico.Size = new System.Drawing.Size(554, 720);
             this.chartGrafico.TabIndex = 0;
             this.chartGrafico.Text = "chart1";
+            this.chartGrafico.Click += new System.EventHandler(this.chartGrafico_Click);
             // 
-            // labelfacturaguia
+            // textBox2Revision
             // 
-            this.labelfacturaguia.AutoSize = true;
-            this.labelfacturaguia.Location = new System.Drawing.Point(7, 28);
-            this.labelfacturaguia.Name = "labelfacturaguia";
-            this.labelfacturaguia.Size = new System.Drawing.Size(35, 13);
-            this.labelfacturaguia.TabIndex = 4;
-            this.labelfacturaguia.Text = "label8";
+            this.textBox2Revision.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Revision.Location = new System.Drawing.Point(7, 37);
+            this.textBox2Revision.Name = "textBox2Revision";
+            this.textBox2Revision.Size = new System.Drawing.Size(238, 13);
+            this.textBox2Revision.TabIndex = 2;
             // 
-            // labeltipo
+            // textBox2FechaAprobacion
             // 
-            this.labeltipo.AutoSize = true;
-            this.labeltipo.Location = new System.Drawing.Point(101, 28);
-            this.labeltipo.Name = "labeltipo";
-            this.labeltipo.Size = new System.Drawing.Size(35, 13);
-            this.labeltipo.TabIndex = 5;
-            this.labeltipo.Text = "label8";
+            this.textBox2FechaAprobacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2FechaAprobacion.Location = new System.Drawing.Point(276, 37);
+            this.textBox2FechaAprobacion.Name = "textBox2FechaAprobacion";
+            this.textBox2FechaAprobacion.Size = new System.Drawing.Size(246, 13);
+            this.textBox2FechaAprobacion.TabIndex = 3;
             // 
-            // labeltamano
+            // textBox2Camara
             // 
-            this.labeltamano.AutoSize = true;
-            this.labeltamano.Location = new System.Drawing.Point(280, 28);
-            this.labeltamano.Name = "labeltamano";
-            this.labeltamano.Size = new System.Drawing.Size(35, 13);
-            this.labeltamano.TabIndex = 6;
-            this.labeltamano.Text = "label8";
+            this.textBox2Camara.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Camara.Location = new System.Drawing.Point(81, 7);
+            this.textBox2Camara.Name = "textBox2Camara";
+            this.textBox2Camara.Size = new System.Drawing.Size(179, 13);
+            this.textBox2Camara.TabIndex = 3;
             // 
-            // labelcantidad
+            // textBox2Cliente
             // 
-            this.labelcantidad.AutoSize = true;
-            this.labelcantidad.Location = new System.Drawing.Point(455, 28);
-            this.labelcantidad.Name = "labelcantidad";
-            this.labelcantidad.Size = new System.Drawing.Size(35, 13);
-            this.labelcantidad.TabIndex = 7;
-            this.labelcantidad.Text = "label8";
+            this.textBox2Cliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Cliente.Location = new System.Drawing.Point(81, 35);
+            this.textBox2Cliente.Name = "textBox2Cliente";
+            this.textBox2Cliente.Size = new System.Drawing.Size(179, 13);
+            this.textBox2Cliente.TabIndex = 4;
+            // 
+            // textBox2Rut
+            // 
+            this.textBox2Rut.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Rut.Location = new System.Drawing.Point(81, 61);
+            this.textBox2Rut.Name = "textBox2Rut";
+            this.textBox2Rut.Size = new System.Drawing.Size(179, 13);
+            this.textBox2Rut.TabIndex = 5;
+            // 
+            // textBox2Giro
+            // 
+            this.textBox2Giro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Giro.Location = new System.Drawing.Point(7, 36);
+            this.textBox2Giro.Name = "textBox2Giro";
+            this.textBox2Giro.Size = new System.Drawing.Size(253, 13);
+            this.textBox2Giro.TabIndex = 2;
+            // 
+            // textBox2Direccion
+            // 
+            this.textBox2Direccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Direccion.Location = new System.Drawing.Point(7, 92);
+            this.textBox2Direccion.Name = "textBox2Direccion";
+            this.textBox2Direccion.Size = new System.Drawing.Size(253, 13);
+            this.textBox2Direccion.TabIndex = 3;
+            // 
+            // textBox2FacturaGuia
+            // 
+            this.textBox2FacturaGuia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2FacturaGuia.Location = new System.Drawing.Point(7, 31);
+            this.textBox2FacturaGuia.Name = "textBox2FacturaGuia";
+            this.textBox2FacturaGuia.Size = new System.Drawing.Size(86, 13);
+            this.textBox2FacturaGuia.TabIndex = 4;
+            // 
+            // textBox2Tipo
+            // 
+            this.textBox2Tipo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Tipo.Location = new System.Drawing.Point(100, 31);
+            this.textBox2Tipo.Name = "textBox2Tipo";
+            this.textBox2Tipo.Size = new System.Drawing.Size(171, 13);
+            this.textBox2Tipo.TabIndex = 5;
+            // 
+            // textBox2Tamano
+            // 
+            this.textBox2Tamano.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Tamano.Location = new System.Drawing.Point(278, 31);
+            this.textBox2Tamano.Name = "textBox2Tamano";
+            this.textBox2Tamano.Size = new System.Drawing.Size(164, 13);
+            this.textBox2Tamano.TabIndex = 6;
+            // 
+            // textBox2Cantidad
+            // 
+            this.textBox2Cantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2Cantidad.Location = new System.Drawing.Point(453, 31);
+            this.textBox2Cantidad.Name = "textBox2Cantidad";
+            this.textBox2Cantidad.Size = new System.Drawing.Size(86, 13);
+            this.textBox2Cantidad.TabIndex = 7;
+            // 
+            // textBox2nombrecert
+            // 
+            this.textBox2nombrecert.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2nombrecert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2nombrecert.Location = new System.Drawing.Point(210, 491);
+            this.textBox2nombrecert.Name = "textBox2nombrecert";
+            this.textBox2nombrecert.Size = new System.Drawing.Size(180, 15);
+            this.textBox2nombrecert.TabIndex = 10;
+            this.textBox2nombrecert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox2ApellidoCert
+            // 
+            this.textBox2ApellidoCert.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2ApellidoCert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2ApellidoCert.Location = new System.Drawing.Point(398, 491);
+            this.textBox2ApellidoCert.Name = "textBox2ApellidoCert";
+            this.textBox2ApellidoCert.Size = new System.Drawing.Size(177, 15);
+            this.textBox2ApellidoCert.TabIndex = 11;
+            // 
+            // button1Guardar
+            // 
+            this.button1Guardar.Location = new System.Drawing.Point(389, 18);
+            this.button1Guardar.Name = "button1Guardar";
+            this.button1Guardar.Size = new System.Drawing.Size(158, 23);
+            this.button1Guardar.TabIndex = 2;
+            this.button1Guardar.Text = "Guardar en base de datos";
+            this.button1Guardar.UseVisualStyleBackColor = true;
+            this.button1Guardar.Click += new System.EventHandler(this.button1Guardar_Click);
+            // 
+            // button1imprimir
+            // 
+            this.button1imprimir.Location = new System.Drawing.Point(553, 18);
+            this.button1imprimir.Name = "button1imprimir";
+            this.button1imprimir.Size = new System.Drawing.Size(132, 23);
+            this.button1imprimir.TabIndex = 3;
+            this.button1imprimir.Text = "Imprimir Formulario";
+            this.button1imprimir.UseVisualStyleBackColor = true;
+            this.button1imprimir.Click += new System.EventHandler(this.button1imprimir_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(691, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Imprimir Grafico";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormularioCertificado
             // 
@@ -460,6 +534,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(910, 982);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button1imprimir);
+            this.Controls.Add(this.button1Guardar);
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(800, 726);
             this.Name = "FormularioCertificado";
@@ -504,21 +581,27 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelGiro;
-        private System.Windows.Forms.Label labeldireccion;
-        private System.Windows.Forms.Label labelCamara;
-        private System.Windows.Forms.Label labelCliente;
-        private System.Windows.Forms.Label labelRut;
-        private System.Windows.Forms.Label labelRevision;
-        private System.Windows.Forms.Label labelFechaAprobacion;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panelGrafico;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartGrafico;
-        private System.Windows.Forms.Label labelfacturaguia;
-        private System.Windows.Forms.Label labeltipo;
-        private System.Windows.Forms.Label labeltamano;
-        private System.Windows.Forms.Label labelcantidad;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2ApellidoCert;
+        private System.Windows.Forms.TextBox textBox2nombrecert;
+        private System.Windows.Forms.TextBox textBox2FacturaGuia;
+        private System.Windows.Forms.TextBox textBox2Tipo;
+        private System.Windows.Forms.TextBox textBox2Tamano;
+        private System.Windows.Forms.TextBox textBox2Cantidad;
+        private System.Windows.Forms.TextBox textBox2Giro;
+        private System.Windows.Forms.TextBox textBox2Direccion;
+        private System.Windows.Forms.TextBox textBox2Camara;
+        private System.Windows.Forms.TextBox textBox2Cliente;
+        private System.Windows.Forms.TextBox textBox2Rut;
+        private System.Windows.Forms.TextBox textBox2Revision;
+        private System.Windows.Forms.TextBox textBox2FechaAprobacion;
+        private System.Windows.Forms.Button button1Guardar;
+        private System.Windows.Forms.Button button1imprimir;
+        private System.Windows.Forms.Button button1;
     }
 }

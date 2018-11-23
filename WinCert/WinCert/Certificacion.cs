@@ -31,6 +31,7 @@ namespace WinCert
         DataTable dtCamaras = new DataTable();
         DataTable dtClientes = new DataTable();
         DataTable dtCertificadores = new DataTable();
+        DataTable dtCertificaciones = new DataTable();
         DataTable dtLineaTemperaturasGenera = new DataTable();
 
 
@@ -96,15 +97,19 @@ namespace WinCert
             Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
 
+          
             /**************************************************************/
 
             ActualizarListaCertificadores();
             ActualizarListaCamaras();
             ActualizarListaClientes();
+            ActualizarListaCertificaciones();
 
             comboBox1Camara.DisplayMember = "Codigo";
             comboBox1Camara.ValueMember = "Codigo";
             comboBox1Camara.DataSource = dtCamaras;
+
+            tabPage1.Visible = false;
 
             comboBox1Certificador.DisplayMember = "Nombre";
             comboBox1Certificador.ValueMember = "Rut";
@@ -115,6 +120,52 @@ namespace WinCert
             comboBox1Cliente.DataSource = dtClientes;
 
             label8AdvertenciaGeneracion.Text = "";
+        }
+
+
+        public void ActualizarListaCertificaciones()
+        {
+
+            SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            conexion.Open();
+
+            // Lanzamos la consulta y preparamos la estructura para leer datos
+            string consulta = "select " +
+                /*int 0*/"Certificacion_id , " +
+                  /*int 1*/ "Revision , " +
+                  /*int 2*/"certificado , " +
+                   /*string 4 */"CamaraCodigo , " +
+                   /*string 5 */"Cliente , " +
+                   /*string 6 */"RutCliente , " +
+                   /*string 7 */"GiroCliente , " +
+                   /*string 8 */"DireccionCliente , " +
+                   /*string 9 */"Facturaguia , " +
+                   /*string 10 */"Tipo , " +
+                   /*string 11 */"Tamano , " +
+                    /*int 12 */"Cantidad , " +
+                    /*string 13 */"Descripcion , " +
+                    /*string 14 */"NombreCertificador , " +
+                    /*string 15 */"ApellidoCertificador " +
+                    " from Certificacion where certificado=1";
+
+            // Adaptador de datos, DataSet y tabla
+            SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
+
+            DataSet ds = new DataSet();
+            ds.Reset();
+
+            dtCertificaciones = new DataTable();
+            db.Fill(ds);
+            
+            //Asigna al DataTable la primer tabla (ciudades) 
+            // y la mostramos en el DataGridView
+            dtCertificaciones = ds.Tables[0];
+
+         dataGridViewCertificaciones.DataSource = dtCertificaciones;
+
+            // Y ya podemos cerrar la conexion
+            conexion.Close();
+
         }
 
         public void actualizaGraficoGenera(int certificaid) {
@@ -794,7 +845,7 @@ namespace WinCert
 
             Command.Parameters.AddWithValue("@FechaAprovacion", fecha);
             Command.Parameters.AddWithValue("@CamaraCodigo", codigocamara);
-            Command.Parameters.AddWithValue("@Cliente", Cliente);
+            Command.Parameters.AddWithValue("@Cliente", nombreclient);
             Command.Parameters.AddWithValue("@RutCliente", rutclient);
             Command.Parameters.AddWithValue("@GiroCliente", giroclient);
             Command.Parameters.AddWithValue("@DireccionCliente", direccionclient);
@@ -883,9 +934,9 @@ namespace WinCert
                 Command.Parameters.AddWithValue("@Fecha", fechainicio);
 
 
-                sensor1Tem= rnd.Next(0, 2)+ sensor1Tem;
-                sensor2Tem = rnd.Next(0, 2)+ sensor2Tem;
-                sensor3Tem = rnd.Next(0, 2)+ sensor3Tem;
+                sensor1Tem= rnd.Next(0, 2)* rnd.Next(0, 2) + sensor1Tem;
+                sensor2Tem = rnd.Next(0, 2) * rnd.Next(0, 2) + sensor2Tem;
+                sensor3Tem = rnd.Next(0, 2) * rnd.Next(0, 2) + sensor3Tem;
 
                 SQLiteDataReader query = Command.ExecuteReader();
                 dtLineaTemperaturasGenera.Load(query);
@@ -915,10 +966,90 @@ namespace WinCert
 
         private void button1VerReporte_Click(object sender, EventArgs e)
         {
-            FormularioCertificado formulario = new FormularioCertificado("client","hola");
+            int Certificacion_id=0;
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+            SQLiteCommand Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "SELECT Certificacion_id from Certificacion order by Certificacion_id DESC limit 1";
+            SQLiteDataReader query = Command.ExecuteReader();
+
+            while (query.Read())
+            {
+                Certificacion_id = query.GetInt16(0);
+            }
+
+            m_dbConnection.Close();
+
+            FormularioCertificado formulario = new FormularioCertificado(Certificacion_id);
             formulario.Show();
 
             
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1ActualizarCer_Click(object sender, EventArgs e)
+        {
+            ActualizarListaCertificaciones();
+        }
+
+        private void textBox1GeneraCantidad_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textBox1GeneraCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+  if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+    if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dataGridView1Camara_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            label11certadver.Text = "";
+
+            if (dataGridViewCertificaciones.SelectedRows.Count == 0)
+            {
+
+                label11certadver.Text = "Debe seleccionar un certificado";
+
+            }
+            else {
+
+                string id = dataGridViewCertificaciones.SelectedRows[0].Cells[0].Value.ToString();
+                int idint= Int32.Parse(id);
+
+               FormularioCertificado formulario = new FormularioCertificado(idint);
+                formulario.Show();
+
+
+            }
         }
     }
 }
