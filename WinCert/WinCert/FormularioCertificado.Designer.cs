@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panelCertificado = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -70,6 +70,8 @@
             this.button1Guardar = new System.Windows.Forms.Button();
             this.button1imprimir = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label8fechaactual = new System.Windows.Forms.Label();
             this.panelCertificado.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -88,6 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCertificado.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelCertificado.Controls.Add(this.label8fechaactual);
             this.panelCertificado.Controls.Add(this.textBox2ApellidoCert);
             this.panelCertificado.Controls.Add(this.textBox2nombrecert);
             this.panelCertificado.Controls.Add(this.textBox1);
@@ -97,7 +100,7 @@
             this.panelCertificado.Controls.Add(this.tableLayoutPanel1);
             this.panelCertificado.Controls.Add(this.label2);
             this.panelCertificado.Controls.Add(this.label1);
-            this.panelCertificado.Location = new System.Drawing.Point(23, 30);
+            this.panelCertificado.Location = new System.Drawing.Point(23, 53);
             this.panelCertificado.Margin = new System.Windows.Forms.Padding(30);
             this.panelCertificado.MaximumSize = new System.Drawing.Size(612, 792);
             this.panelCertificado.MinimumSize = new System.Drawing.Size(612, 792);
@@ -110,13 +113,13 @@
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(117, 684);
+            this.textBox1.Location = new System.Drawing.Point(150, 694);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(332, 75);
+            this.textBox1.Size = new System.Drawing.Size(295, 75);
             this.textBox1.TabIndex = 9;
             this.textBox1.Text = "ECOMAD S.p.A Comercializadora de Maderas y Embalajes Direccion 10 Poniente Parcel" +
-    "a N 263 Lote C Paine";
+    "a N 263 Lote C Paine Telefono: (56-2) 8251336";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel4
@@ -349,6 +352,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panelCertificado);
+            this.tabPage1.Controls.Add(this.button1imprimir);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -360,6 +364,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelGrafico);
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -371,7 +376,7 @@
             // panelGrafico
             // 
             this.panelGrafico.Controls.Add(this.chartGrafico);
-            this.panelGrafico.Location = new System.Drawing.Point(30, 34);
+            this.panelGrafico.Location = new System.Drawing.Point(30, 58);
             this.panelGrafico.MaximumSize = new System.Drawing.Size(612, 792);
             this.panelGrafico.MinimumSize = new System.Drawing.Size(612, 792);
             this.panelGrafico.Name = "panelGrafico";
@@ -380,10 +385,10 @@
             // 
             // chartGrafico
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartGrafico.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartGrafico.Legends.Add(legend6);
+            chartArea1.Name = "ChartArea1";
+            this.chartGrafico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartGrafico.Legends.Add(legend1);
             this.chartGrafico.Location = new System.Drawing.Point(22, 23);
             this.chartGrafico.Name = "chartGrafico";
             this.chartGrafico.Size = new System.Drawing.Size(554, 720);
@@ -500,7 +505,7 @@
             // 
             // button1Guardar
             // 
-            this.button1Guardar.Location = new System.Drawing.Point(389, 18);
+            this.button1Guardar.Location = new System.Drawing.Point(525, 18);
             this.button1Guardar.Name = "button1Guardar";
             this.button1Guardar.Size = new System.Drawing.Size(158, 23);
             this.button1Guardar.TabIndex = 2;
@@ -510,7 +515,7 @@
             // 
             // button1imprimir
             // 
-            this.button1imprimir.Location = new System.Drawing.Point(553, 18);
+            this.button1imprimir.Location = new System.Drawing.Point(503, 17);
             this.button1imprimir.Name = "button1imprimir";
             this.button1imprimir.Size = new System.Drawing.Size(132, 23);
             this.button1imprimir.TabIndex = 3;
@@ -520,7 +525,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(691, 18);
+            this.button1.Location = new System.Drawing.Point(521, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 4;
@@ -528,14 +533,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(693, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(119, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Cerrar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label8fechaactual
+            // 
+            this.label8fechaactual.AutoSize = true;
+            this.label8fechaactual.Location = new System.Drawing.Point(421, 567);
+            this.label8fechaactual.Name = "label8fechaactual";
+            this.label8fechaactual.Size = new System.Drawing.Size(35, 13);
+            this.label8fechaactual.TabIndex = 12;
+            this.label8fechaactual.Text = "label8";
+            this.label8fechaactual.Click += new System.EventHandler(this.label8fechaactual_Click);
+            // 
             // FormularioCertificado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(910, 982);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button1imprimir);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1Guardar);
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(800, 726);
@@ -603,5 +627,7 @@
         private System.Windows.Forms.Button button1Guardar;
         private System.Windows.Forms.Button button1imprimir;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label8fechaactual;
     }
 }

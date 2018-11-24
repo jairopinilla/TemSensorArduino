@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,9 +64,18 @@ namespace WinCert
             chartGrafico.Series["Sensor 2"].XValueType = ChartValueType.Time;
             chartGrafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
+
+
+
+             DateTime lastConnection = DateTime.Now;
+             String dateString = "Paine " + lastConnection.ToString("dd") + " de " + lastConnection.ToString("MMMM", new CultureInfo("es-ES")) + " de " +
+                "" + DateTime.Now.Year.ToString();
+
+            label8fechaactual.Text = dateString;
+
             //------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+        SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
             m_dbConnection.Open();
 
             SQLiteCommand Command = new SQLiteCommand();
@@ -184,6 +194,8 @@ namespace WinCert
 
             SQLiteDataReader query = Command.ExecuteReader();
 
+            MessageBox.Show("Se guardo el reporte en la base de datos de certificaciones");
+
         }
 
         private void PrintPanel()
@@ -260,6 +272,16 @@ namespace WinCert
             panelGrafico.Size = new Size(pixelsWidth, pixelsHeight);
 
             PrintPanelChart();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label8fechaactual_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

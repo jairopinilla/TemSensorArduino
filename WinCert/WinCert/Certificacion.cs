@@ -131,21 +131,14 @@ namespace WinCert
 
             // Lanzamos la consulta y preparamos la estructura para leer datos
             string consulta = "select " +
-                /*int 0*/"Certificacion_id , " +
                   /*int 1*/ "Revision , " +
                   /*int 2*/"certificado , " +
-                   /*string 4 */"CamaraCodigo , " +
                    /*string 5 */"Cliente , " +
-                   /*string 6 */"RutCliente , " +
-                   /*string 7 */"GiroCliente , " +
-                   /*string 8 */"DireccionCliente , " +
                    /*string 9 */"Facturaguia , " +
                    /*string 10 */"Tipo , " +
                    /*string 11 */"Tamano , " +
                     /*int 12 */"Cantidad , " +
-                    /*string 13 */"Descripcion , " +
-                    /*string 14 */"NombreCertificador , " +
-                    /*string 15 */"ApellidoCertificador " +
+                    /*string 14 */"NombreCertificador  " +
                     " from Certificacion where certificado=1";
 
             // Adaptador de datos, DataSet y tabla

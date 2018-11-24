@@ -115,6 +115,36 @@ namespace WinCert
 
                 insertCommand.ExecuteReader();
 
+                //----------------------------------------------------------------
+                insertCommand = new SQLiteCommand();
+                insertCommand.Connection = m_dbConnection;
+                insertCommand.CommandText = "INSERT INTO Camara VALUES (@Entry);";
+                insertCommand.Parameters.AddWithValue("@Entry", "CL 13136");
+
+                insertCommand.ExecuteReader();
+
+                //----------------------------------------------------------------
+                insertCommand = new SQLiteCommand();
+                insertCommand.Connection = m_dbConnection;
+                insertCommand.CommandText = "INSERT INTO Cliente(Nombre,Giro,Rut,Direccion) VALUES (@Nombre,@Giro,@Rut,@Direccion);";
+                insertCommand.Parameters.AddWithValue("@Nombre", "Materiales de Embalaje S.A");
+                insertCommand.Parameters.AddWithValue("@Giro", "Fabricacion de otros articulos de papel");
+                insertCommand.Parameters.AddWithValue("@Rut", "96.528.070-7");
+                insertCommand.Parameters.AddWithValue("@Direccion", "Almirante Riveros N 0351 San Bernardo");
+
+                insertCommand.ExecuteReader();
+
+                //----------------------------------------------------------------
+                insertCommand = new SQLiteCommand();
+                insertCommand.Connection = m_dbConnection;
+                insertCommand.CommandText = "INSERT INTO Certificador(Nombre,Apellido,Rut) values (@Nombre,@Apellido,@Rut);";
+                insertCommand.Parameters.AddWithValue("@Nombre", "Priscilla");
+                insertCommand.Parameters.AddWithValue("@Apellido", "Navarrete Leon");
+                insertCommand.Parameters.AddWithValue("@Rut", "15.549.792-0");
+
+                insertCommand.ExecuteReader();
+
+
 
             }
         }
