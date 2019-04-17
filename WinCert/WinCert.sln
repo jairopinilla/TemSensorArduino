@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinCert", "WinCert\WinCert.csproj", "{FAF583B7-5ADC-431E-BFE2-A56F6E618759}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CertificacionInstaller", "CertificacionInstaller\CertificacionInstaller.vdproj", "{A0878010-F1DB-44A2-98CC-2249496D40B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{FAF583B7-5ADC-431E-BFE2-A56F6E618759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAF583B7-5ADC-431E-BFE2-A56F6E618759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAF583B7-5ADC-431E-BFE2-A56F6E618759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0878010-F1DB-44A2-98CC-2249496D40B8}.Debug|Any CPU.ActiveCfg = Debug
+		{A0878010-F1DB-44A2-98CC-2249496D40B8}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
