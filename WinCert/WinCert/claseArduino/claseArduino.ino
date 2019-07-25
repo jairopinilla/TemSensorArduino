@@ -1,10 +1,21 @@
  #include "max6675.h"
+ #include <ArduinoJson.h>  
 
-int ktcSO = 8;
-int ktcCS = 9;
-int ktcCLK = 10;
+int ktcSO1 = 13;
+int ktcCS1 = 12;
+int ktcCLK1 = 11;
 
-MAX6675 ktc(ktcCLK, ktcCS, ktcSO);
+int ktcSO2 = 10;
+int ktcCS2 = 9;
+int ktcCLK2 = 8;
+
+int ktcSO3 = 7;
+int ktcCS3 = 6;
+int ktcCLK3 = 5;
+
+MAX6675 ktc2(ktcCLK2, ktcCS2, ktcSO2);
+MAX6675 ktc3(ktcCLK3, ktcCS3, ktcSO3);
+MAX6675 ktc1(ktcCLK1, ktcCS1, ktcSO1);
 
   
 void setup() {
@@ -14,13 +25,16 @@ void setup() {
 }
 
 void loop() {
-  // basic readout test
-  
-   //Serial.print("Deg C = "); 
-   Serial.println(ktc.readCelsius());
-  // Serial.print("\t");
-   //Serial.print("\t Deg F = ");
-   //Serial.println(ktc.readFahrenheit());
- 
-   delay(500);
+   // basic readout test
+  StaticJsonDocument<200> doc;
+
+  doc["temp1"] = ktc1.readCelsius();
+  doc["temp2"] = ktc2.readCelsius();
+  doc["temp3"] = ktc3.readCelsius();
+   
+  serializeJson(doc, Serial);
+  Serial.println("");
+
+ // Serial.println(ktc1.readCelsius());
+  delay(1000);
 }
