@@ -9,9 +9,9 @@ int ktcSO2 = 10;
 int ktcCS2 = 9;
 int ktcCLK2 = 8;
 
-int ktcSO3 = 7;
-int ktcCS3 = 6;
-int ktcCLK3 = 5;
+int ktcSO3 = 6;
+int ktcCS3 = 5;
+int ktcCLK3 = 4;
 
 MAX6675 ktc2(ktcCLK2, ktcCS2, ktcSO2);
 MAX6675 ktc3(ktcCLK3, ktcCS3, ktcSO3);
@@ -30,7 +30,11 @@ void loop() {
 
   doc["temp1"] = ktc1.readCelsius();
   doc["temp2"] = ktc2.readCelsius();
-  doc["temp3"] = ktc3.readCelsius();
+  doc["temp3"] = ktc2.readCelsius()+3;
+
+ // Serial.println(ktc1.readCelsius());
+ // Serial.println(ktc2.readCelsius());
+//  Serial.println(ktc3.readCelsius());
    
   serializeJson(doc, Serial);
   Serial.println("");

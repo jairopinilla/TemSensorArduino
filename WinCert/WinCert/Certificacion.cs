@@ -45,81 +45,81 @@ namespace WinCert
 
             button1VerReporte.Enabled = false; 
 
-            /*
+            
             ArduinoPort = new System.IO.Ports.SerialPort();
-            ArduinoPort.PortName = "COM4";  //sustituir por vuestro 
+            ArduinoPort.PortName = "COM3";  //sustituir por vuestro 
             ArduinoPort.BaudRate = 9600;
 
             ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             ArduinoPort.Open();
-            */
+            
 
             /**************************************************************/
+            
+            //chart1GraficoGenera.Series.Add("Sensor 1");
+            //chart1GraficoGenera.Series.Add("Sensor 2");
+            //chart1GraficoGenera.Series.Add("Sensor 3");
 
-            chart1GraficoGenera.Series.Add("Sensor 1");
-            chart1GraficoGenera.Series.Add("Sensor 2");
-            chart1GraficoGenera.Series.Add("Sensor 3");
+            //chart1GraficoGenera.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
+            //chart1GraficoGenera.Series["Sensor 1"].Color = Color.Red;
 
-            chart1GraficoGenera.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
-            chart1GraficoGenera.Series["Sensor 1"].Color = Color.Red;
+            //chart1GraficoGenera.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
+            //chart1GraficoGenera.Series["Sensor 2"].Color = Color.Blue;
 
-            chart1GraficoGenera.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
-            chart1GraficoGenera.Series["Sensor 2"].Color = Color.Blue;
+            //chart1GraficoGenera.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
+            //chart1GraficoGenera.Series["Sensor 3"].Color = Color.Green;
 
-            chart1GraficoGenera.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
-            chart1GraficoGenera.Series["Sensor 3"].Color = Color.Green;
-
-            chart1GraficoGenera.Series["Sensor 1"].XValueType = ChartValueType.Time;
-            chart1GraficoGenera.Series["Sensor 2"].XValueType = ChartValueType.Time;
-            chart1GraficoGenera.Series["Sensor 3"].XValueType = ChartValueType.Time;
-
-
-            /**************************************************************/
-
-            Grafico.Series.Add("Sensor 1");
-            Grafico.Series.Add("Sensor 2");
-            Grafico.Series.Add("Sensor 3");
+            //chart1GraficoGenera.Series["Sensor 1"].XValueType = ChartValueType.Time;
+            //chart1GraficoGenera.Series["Sensor 2"].XValueType = ChartValueType.Time;
+            //chart1GraficoGenera.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
 
+            ///**************************************************************/
 
-            Grafico.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
-            Grafico.Series["Sensor 1"].Color = Color.Red;
+            //Grafico.Series.Add("Sensor 1");
+            //Grafico.Series.Add("Sensor 2");
+            //Grafico.Series.Add("Sensor 3");
 
-            Grafico.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
-            Grafico.Series["Sensor 2"].Color = Color.Blue;
 
-            Grafico.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
-            Grafico.Series["Sensor 3"].Color = Color.Green;
 
-            Grafico.Series["Sensor 1"].XValueType = ChartValueType.Time;
-            Grafico.Series["Sensor 2"].XValueType = ChartValueType.Time;
-            Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
+            //Grafico.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
+            //Grafico.Series["Sensor 1"].Color = Color.Red;
+
+            //Grafico.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
+            //Grafico.Series["Sensor 2"].Color = Color.Blue;
+
+            //Grafico.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
+            //Grafico.Series["Sensor 3"].Color = Color.Green;
+
+            //Grafico.Series["Sensor 1"].XValueType = ChartValueType.Time;
+            //Grafico.Series["Sensor 2"].XValueType = ChartValueType.Time;
+            //Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
 
           
-            /**************************************************************/
+            ///**************************************************************/
 
-            ActualizarListaCertificadores();
-            ActualizarListaCamaras();
-            ActualizarListaClientes();
-            ActualizarListaCertificaciones();
+            //ActualizarListaCertificadores();
+            //ActualizarListaCamaras();
+            //ActualizarListaClientes();
+            //ActualizarListaCertificaciones();
 
-            comboBox1Camara.DisplayMember = "Codigo";
-            comboBox1Camara.ValueMember = "Codigo";
-            comboBox1Camara.DataSource = dtCamaras;
+            //comboBox1Camara.DisplayMember = "Codigo";
+            //comboBox1Camara.ValueMember = "Codigo";
+            //comboBox1Camara.DataSource = dtCamaras;
 
-            tabPage1.Visible = false;
+            //tabPage1.Visible = false;
 
-            comboBox1Certificador.DisplayMember = "Nombre";
-            comboBox1Certificador.ValueMember = "Rut";
-            comboBox1Certificador.DataSource = dtCertificadores;
+            //comboBox1Certificador.DisplayMember = "Nombre";
+            //comboBox1Certificador.ValueMember = "Rut";
+            //comboBox1Certificador.DataSource = dtCertificadores;
 
-            comboBox1Cliente.DisplayMember = "Nombre";
-            comboBox1Cliente.ValueMember = "Rut";
-            comboBox1Cliente.DataSource = dtClientes;
+            //comboBox1Cliente.DisplayMember = "Nombre";
+            //comboBox1Cliente.ValueMember = "Rut";
+            //comboBox1Cliente.DataSource = dtClientes;
 
-            label8AdvertenciaGeneracion.Text = "";
+            //label8AdvertenciaGeneracion.Text = "";
         }
 
 
