@@ -30,7 +30,7 @@ void loop() {
 
   doc["temp1"] = ktc1.readCelsius();
   doc["temp2"] = ktc2.readCelsius();
-  doc["temp3"] = ktc2.readCelsius()+3;
+  doc["temp3"] = ktc3.readCelsius();
 
  // Serial.println(ktc1.readCelsius());
  // Serial.println(ktc2.readCelsius());
