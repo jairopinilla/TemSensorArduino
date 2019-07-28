@@ -31,6 +31,7 @@
             this.textcodigoinput = new System.Windows.Forms.TextBox();
             this.IngresarBoton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.MensajeError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textcodigoinput
@@ -39,8 +40,10 @@
             this.textcodigoinput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textcodigoinput.Location = new System.Drawing.Point(156, 215);
             this.textcodigoinput.Name = "textcodigoinput";
+            this.textcodigoinput.PasswordChar = '*';
             this.textcodigoinput.Size = new System.Drawing.Size(286, 31);
             this.textcodigoinput.TabIndex = 1;
+            this.textcodigoinput.UseSystemPasswordChar = true;
             // 
             // IngresarBoton
             // 
@@ -66,9 +69,19 @@
             this.label2.Text = "Ingrese Codigo";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // MensajeError
+            // 
+            this.MensajeError.AutoSize = true;
+            this.MensajeError.ForeColor = System.Drawing.Color.Red;
+            this.MensajeError.Location = new System.Drawing.Point(158, 300);
+            this.MensajeError.Name = "MensajeError";
+            this.MensajeError.Size = new System.Drawing.Size(0, 13);
+            this.MensajeError.TabIndex = 4;
+            // 
             // Login
             // 
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.MensajeError);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.IngresarBoton);
             this.Controls.Add(this.textcodigoinput);
@@ -90,6 +103,7 @@
         private System.Windows.Forms.TextBox textcodigoinput;
         private System.Windows.Forms.Button IngresarBoton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label MensajeError;
     }
 }
 

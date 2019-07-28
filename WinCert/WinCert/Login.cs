@@ -182,7 +182,7 @@ namespace WinCert
             SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
             m_dbConnection.Open();
 
-            SQLiteCommand selectCommand = new SQLiteCommand("SELECT Codigo from Acceso", m_dbConnection);
+            SQLiteCommand selectCommand = new SQLiteCommand("SELECT Codigo from Acceso where Codigo='"+ textcodigoinput.Text+"'", m_dbConnection);
             SQLiteDataReader query = selectCommand.ExecuteReader();
 
             while (query.Read())
@@ -192,12 +192,26 @@ namespace WinCert
 
             m_dbConnection.Close();
 
+
+            MensajeError.Text = "";
+
             if (entries[0] == textcodigoinput.Text)
             {
+
+                if (textcodigoinput.Text == "certificamula2019") {
+
+                    certificacionForm.GeneraMula = true;
+
+                }
+
+                   
 
                 certificacionForm.Show();
                 this.Hide();
 
+            }
+            else {
+                MensajeError.Text = "Clave Erronea";
             }
 
         }

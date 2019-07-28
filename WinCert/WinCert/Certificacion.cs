@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Data.SQLite;
 using WinCert.Clases;
+using Newtonsoft.Json.Linq;
 
 namespace WinCert
 {
@@ -22,6 +23,10 @@ namespace WinCert
         public float temperatura1 = 0;
         public float temperatura2 = 0;
         public float temperatura3 = 0;
+
+        public Boolean GeneraMula = false;
+
+       
 
 
         List<float> pointsArray1 = new List<float>();
@@ -35,6 +40,9 @@ namespace WinCert
         DataTable dtLineaTemperaturasGenera = new DataTable();
 
 
+        
+
+
         public Certificacion()
         {
             InitializeComponent();
@@ -43,9 +51,12 @@ namespace WinCert
         private void Certificacion_Load(object sender, EventArgs e)
         {
 
-            button1VerReporte.Enabled = false; 
+            TiempoInicio.Enabled = false;
+            minutoEnCertificacion.Enabled = false;
 
-            
+            button1VerReporte.Enabled = false;
+            button1Generar.Visible = GeneraMula;
+
             ArduinoPort = new System.IO.Ports.SerialPort();
             ArduinoPort.PortName = "COM3";  //sustituir por vuestro 
             ArduinoPort.BaudRate = 9600;
@@ -53,73 +64,73 @@ namespace WinCert
             ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             ArduinoPort.Open();
-            
+
 
             /**************************************************************/
+
+            chart1GraficoGenera.Series.Add("Sensor 1");
+            chart1GraficoGenera.Series.Add("Sensor 2");
+            chart1GraficoGenera.Series.Add("Sensor 3");
+
+            chart1GraficoGenera.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
+            chart1GraficoGenera.Series["Sensor 1"].Color = Color.Red;
+
+            chart1GraficoGenera.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
+            chart1GraficoGenera.Series["Sensor 2"].Color = Color.Blue;
+
+            chart1GraficoGenera.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
+            chart1GraficoGenera.Series["Sensor 3"].Color = Color.Green;
+
+            chart1GraficoGenera.Series["Sensor 1"].XValueType = ChartValueType.Time;
+            chart1GraficoGenera.Series["Sensor 2"].XValueType = ChartValueType.Time;
+            chart1GraficoGenera.Series["Sensor 3"].XValueType = ChartValueType.Time;
+
+
+            /**************************************************************/
+
+            Grafico.Series.Add("Sensor 1");
+            Grafico.Series.Add("Sensor 2");
+            Grafico.Series.Add("Sensor 3");
+
             
-            //chart1GraficoGenera.Series.Add("Sensor 1");
-            //chart1GraficoGenera.Series.Add("Sensor 2");
-            //chart1GraficoGenera.Series.Add("Sensor 3");
 
-            //chart1GraficoGenera.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
-            //chart1GraficoGenera.Series["Sensor 1"].Color = Color.Red;
+            Grafico.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Sensor 1"].Color = Color.Red;
 
-            //chart1GraficoGenera.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
-            //chart1GraficoGenera.Series["Sensor 2"].Color = Color.Blue;
+            Grafico.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Sensor 2"].Color = Color.Blue;
 
-            //chart1GraficoGenera.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
-            //chart1GraficoGenera.Series["Sensor 3"].Color = Color.Green;
+            Grafico.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
+            Grafico.Series["Sensor 3"].Color = Color.Green;
 
-            //chart1GraficoGenera.Series["Sensor 1"].XValueType = ChartValueType.Time;
-            //chart1GraficoGenera.Series["Sensor 2"].XValueType = ChartValueType.Time;
-            //chart1GraficoGenera.Series["Sensor 3"].XValueType = ChartValueType.Time;
-
-
-            ///**************************************************************/
-
-            //Grafico.Series.Add("Sensor 1");
-            //Grafico.Series.Add("Sensor 2");
-            //Grafico.Series.Add("Sensor 3");
+            Grafico.Series["Sensor 1"].XValueType = ChartValueType.Time;
+            Grafico.Series["Sensor 2"].XValueType = ChartValueType.Time;
+            Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
 
 
 
-            //Grafico.Series["Sensor 1"].ChartType = SeriesChartType.FastLine;
-            //Grafico.Series["Sensor 1"].Color = Color.Red;
+            /**************************************************************/
 
-            //Grafico.Series["Sensor 2"].ChartType = SeriesChartType.FastLine;
-            //Grafico.Series["Sensor 2"].Color = Color.Blue;
+            ActualizarListaCertificadores();
+            ActualizarListaCamaras();
+            ActualizarListaClientes();
+            ActualizarListaCertificaciones();
 
-            //Grafico.Series["Sensor 3"].ChartType = SeriesChartType.FastLine;
-            //Grafico.Series["Sensor 3"].Color = Color.Green;
+            comboBox1Camara.DisplayMember = "Codigo";
+            comboBox1Camara.ValueMember = "Codigo";
+            comboBox1Camara.DataSource = dtCamaras;
 
-            //Grafico.Series["Sensor 1"].XValueType = ChartValueType.Time;
-            //Grafico.Series["Sensor 2"].XValueType = ChartValueType.Time;
-            //Grafico.Series["Sensor 3"].XValueType = ChartValueType.Time;
+            tabPage1.Visible = false;
 
+            comboBox1Certificador.DisplayMember = "Nombre";
+            comboBox1Certificador.ValueMember = "Rut";
+            comboBox1Certificador.DataSource = dtCertificadores;
 
-          
-            ///**************************************************************/
+            comboBox1Cliente.DisplayMember = "Nombre";
+            comboBox1Cliente.ValueMember = "Rut";
+            comboBox1Cliente.DataSource = dtClientes;
 
-            //ActualizarListaCertificadores();
-            //ActualizarListaCamaras();
-            //ActualizarListaClientes();
-            //ActualizarListaCertificaciones();
-
-            //comboBox1Camara.DisplayMember = "Codigo";
-            //comboBox1Camara.ValueMember = "Codigo";
-            //comboBox1Camara.DataSource = dtCamaras;
-
-            //tabPage1.Visible = false;
-
-            //comboBox1Certificador.DisplayMember = "Nombre";
-            //comboBox1Certificador.ValueMember = "Rut";
-            //comboBox1Certificador.DataSource = dtCertificadores;
-
-            //comboBox1Cliente.DisplayMember = "Nombre";
-            //comboBox1Cliente.ValueMember = "Rut";
-            //comboBox1Cliente.DataSource = dtClientes;
-
-            //label8AdvertenciaGeneracion.Text = "";
+            label8AdvertenciaGeneracion.Text = "";
         }
 
 
@@ -296,9 +307,22 @@ namespace WinCert
             string indata = sp.ReadLine();
             string curTime = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString();
 
-            temperatura1 = float.Parse(indata, CultureInfo.InvariantCulture.NumberFormat);
-            temperatura2 = temperatura1 + 3;
-            temperatura3 = temperatura1 - 5;
+            JObject jObject = JObject.Parse(indata);
+            var jsonData = JObject.Parse(jObject.ToString());
+
+
+            var random = new Random();
+            int multiplicador = random.Next(0, 2);
+
+            float temp1=  (float)jsonData["temp1"];
+            float temp2 = (float)jsonData["temp2"];
+            float temp3 = temp2 + multiplicador * 1;
+
+
+
+            temperatura1 = temp1;
+            temperatura2 = temp2;
+            temperatura3 = temp3;
 
             actualiza(temperatura1, temperatura2, temperatura3);
             Console.WriteLine(temperatura1);
@@ -1043,6 +1067,123 @@ namespace WinCert
 
 
             }
+        }
+
+        /**********************************************************************************************************/
+        /********************************INICIAR REPORTE**************************************************************************/
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+            button1VerReporte.Enabled = false;
+
+            label8AdvertenciaGeneracion.Text = "";
+
+            if (
+                comboBox1Camara.SelectedValue.ToString() == "" || comboBox1Camara.SelectedValue.ToString() == null
+                || comboBox1Certificador.SelectedValue.ToString() == "" || comboBox1Certificador.SelectedValue.ToString() == null
+                || comboBox1Cliente.SelectedValue.ToString() == "" || comboBox1Cliente.SelectedValue.ToString() == null
+                || textBox1GeneraTamano.Text == "" || textBox1GeneraTamano.Text == null
+                || textBox1GeneraTipo.Text == "" || textBox1GeneraTipo.Text == null
+                || textBox1GeneraCantidad.Text == "" || textBox1GeneraCantidad.Text == null
+                || textBox1GEneraFacturaGuia.Text == "" || textBox1GEneraFacturaGuia.Text == null
+
+                )
+            {
+
+                label8AdvertenciaGeneracion.Text = "Debe Seleccionar todos los campos";
+
+            }
+            else
+            {
+
+                string codigocamara = comboBox1Camara.SelectedValue.ToString();
+                string rutcliente = comboBox1Cliente.SelectedValue.ToString();
+                string rutcertificador = comboBox1Certificador.SelectedValue.ToString();
+                string tamano = textBox1GeneraTamano.Text;
+                string tipo = textBox1GeneraTipo.Text;
+                string cantidad = textBox1GeneraCantidad.Text;
+                string facturaguia = textBox1GEneraFacturaGuia.Text;
+
+                string fechageneracion = dateTimePicker1InicioGeneracion.Value.ToShortDateString();
+                string horageneracion = dateTimePicker1generaciontime.Value.ToShortTimeString();
+
+                string nombrecertificador = "";
+                string apellidocertificador = "";
+
+                string nombrecliente = "";
+                string girocliente = "";
+                string direccioncliente = "";
+
+                button1VerReporte.Enabled = true;
+                //----------------------------------------------------------------------
+
+
+                SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+                m_dbConnection.Open();
+
+                SQLiteCommand Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select nombre,apellido, rut from Certificador where Rut=@rut;";
+                Command.Parameters.AddWithValue("@rut", rutcertificador);
+
+                SQLiteDataReader query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    nombrecertificador = query.GetString(0);
+                    apellidocertificador = query.GetString(1);
+                }
+
+
+                //------------------------------------------------------------------
+
+                Command = new SQLiteCommand();
+                Command.Connection = m_dbConnection;
+                Command.CommandText = "select nombre,giro, rut, direccion from Cliente where Rut=@rut;";
+                Command.Parameters.AddWithValue("@rut", rutcliente);
+
+                query = Command.ExecuteReader();
+
+                while (query.Read())
+                {
+                    nombrecliente = query.GetString(0);
+                    girocliente = query.GetString(1);
+                    direccioncliente = query.GetString(2);
+                }
+
+                m_dbConnection.Close();
+
+                //------------------------------------------------------------------
+
+
+
+
+                label8AdvertenciaGeneracion.Text = "";
+
+
+                EstadoText.Text = "En certificacion";
+                EstadoText.BackColor = Color.Green;
+
+                TiempoInicio.Text = DateTime.Now.ToString();
+
+                while (true) {
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+        private void TiempoInicio_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EstadoText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
