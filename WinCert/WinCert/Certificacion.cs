@@ -25,7 +25,17 @@ namespace WinCert
         public float temperatura3 = 0;
 
         public Boolean GeneraMula = false;
+        public Boolean EnCertificacion = false;
+        public Boolean esPerandoCumplirTiempoparaCer = false;
 
+        public int idCertificadoenCurso = 0;
+        public int tiempoenCertificacion = 0;
+
+        public int temperaturaParaCertificar = 0;
+        public int MinutosTerminarCertificacion = 2;
+
+
+        public DateTime fechaInicioCertificacion;
        
 
 
@@ -131,6 +141,8 @@ namespace WinCert
             comboBox1Cliente.DataSource = dtClientes;
 
             label8AdvertenciaGeneracion.Text = "";
+
+            botonCancelar.Enabled = false;
         }
 
 
@@ -314,11 +326,9 @@ namespace WinCert
             var random = new Random();
             int multiplicador = random.Next(0, 2);
 
-            float temp1=  (float)jsonData["temp1"];
+            float temp1 = (float)jsonData["temp1"];
             float temp2 = (float)jsonData["temp2"];
             float temp3 = temp2 + multiplicador * 1;
-
-
 
             temperatura1 = temp1;
             temperatura2 = temp2;
@@ -327,6 +337,113 @@ namespace WinCert
             actualiza(temperatura1, temperatura2, temperatura3);
             Console.WriteLine(temperatura1);
             Console.WriteLine(indata);
+
+            /*****************si esta en certificacion*****************************************************************/
+
+            /*
+                public Boolean GeneraMula = false;
+                public Boolean EnCertificacion = false;
+                public Boolean esPerandoCumplirTiempoparaCer = false;
+
+                public int idCertificadoenCurso = 0;
+                public int tiempoenCertificacion = 0;
+
+                public int temperaturaParaCertificar = 0;
+                public int MinutosTerminarCertificacion = 3;
+
+
+                public DateTime fechaInicioCertificacion;
+                */
+
+            if (EnCertificacion == true && idCertificadoenCurso != 0) {
+
+                if (temp1 >= temperaturaParaCertificar && temp2 >= temperaturaParaCertificar && temp3 >= temperaturaParaCertificar)
+                {
+
+                    tiempoenCertificacion = (DateTime.Now - fechaInicioCertificacion).Minutes;
+
+                    if (InvokeRequired)
+                        Invoke(new Action(() => minutoEnCertificacion.Text = tiempoenCertificacion.ToString()));
+                  
+                    /*****************************************************************************/
+                    if (tiempoenCertificacion >= MinutosTerminarCertificacion) {
+
+                        cerrarCertificacionExitosa();
+
+                    }
+
+                }
+                else {
+
+                    tiempoenCertificacion = 0;
+                }
+
+                /**********************************************/
+
+                ingresaLineaCertificado(idCertificadoenCurso, temperatura1, temperatura2, temperatura3, DateTime.Now);
+
+
+            }
+
+
+
+
+            /**********************************************************************************/
+         
+
+        }
+
+        private void cerrarCertificacionExitosa() {
+
+            /**********************************************************************************/
+
+            System.Windows.Forms.MessageBox.Show("La certificacion ha finalizado de manera exitosa");
+
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+
+
+            SQLiteCommand Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "update Certificacion set finalizado=1, certificado=1, Revision=Certificacion_id where Certificacion_id=@Certificacion_id";
+         
+
+            Command.Parameters.AddWithValue("@Certificacion_id", idCertificadoenCurso);
+            SQLiteDataReader query = Command.ExecuteReader();
+
+
+
+            /**********************************************************************************/
+            CancelarOTerminarCertificacion();
+
+        }
+
+        private void  ingresaLineaCertificado(int idcertificado, float temp1, float temp2, float temp3, DateTime fecha) {
+
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+            SQLiteCommand Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "insert into LineaCertificacion(Certificacion_id, enCertificacion,Sensor1,Sensor2,Sensor3,Fecha ) values" +
+                "(@Certificacion_id, @enCertificacion,@Sensor1,@Sensor2,@Sensor3,@Fecha ) ";
+
+            Command.Parameters.AddWithValue("@Certificacion_id", idcertificado);
+            Command.Parameters.AddWithValue("@enCertificacion", 1);
+            Command.Parameters.AddWithValue("@Sensor1", temp1);
+            Command.Parameters.AddWithValue("@Sensor2", temp2);
+            Command.Parameters.AddWithValue("@Sensor3", temp3);
+            Command.Parameters.AddWithValue("@Fecha", fecha);
+ 
+
+            SQLiteDataReader query = Command.ExecuteReader();
+            dtLineaTemperaturasGenera.Load(query);
+
+   
+
 
         }
 
@@ -348,14 +465,36 @@ namespace WinCert
                 Invoke(new Action(() => label3.Text = t2.ToString()));
 
             //--------------------------------------------------------------------------------------------//
-            if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series["Sensor 1"].Points.AddXY(DateTime.Now, t1)));
 
-            if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series["Sensor 2"].Points.AddXY(DateTime.Now, t2)));
+            if (GeneraMula == false)
+            {
 
-            if (InvokeRequired)
-                Invoke(new Action(() => Grafico.Series["Sensor 3"].Points.AddXY(DateTime.Now, t3)));
+                if (InvokeRequired)
+                    Invoke(new Action(() => chart1GraficoGenera.Series["Sensor 1"].Points.AddXY(DateTime.Now, t1)));
+
+                if (InvokeRequired)
+                    Invoke(new Action(() => chart1GraficoGenera.Series["Sensor 2"].Points.AddXY(DateTime.Now, t2)));
+
+                if (InvokeRequired)
+                    Invoke(new Action(() => chart1GraficoGenera.Series["Sensor 3"].Points.AddXY(DateTime.Now, t3)));
+
+
+
+
+            }
+            else {
+
+                if (InvokeRequired)
+                    Invoke(new Action(() => Grafico.Series["Sensor 1"].Points.AddXY(DateTime.Now, t1)));
+
+                if (InvokeRequired)
+                    Invoke(new Action(() => Grafico.Series["Sensor 2"].Points.AddXY(DateTime.Now, t2)));
+
+                if (InvokeRequired)
+                    Invoke(new Action(() => Grafico.Series["Sensor 3"].Points.AddXY(DateTime.Now, t3)));
+
+            }
+
 
 
 
@@ -842,6 +981,72 @@ namespace WinCert
 
         }
 
+        //**************************************************************************************************
+
+        private int ingresaCertificacion(string nombrecert, string apellidocert, string nombreclient, string giroclient, string direccionclient,
+    string rutclient, string codigocamara, string tamano, string tipo, string cantidad, string facturaguia, string fecha, string hora)
+        {
+
+
+            int Certificacion_id = 0;
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+            SQLiteCommand Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "insert into Certificacion (finalizado,certificado, FechaAprovacion, CamaraCodigo, Cliente, " +
+                " RutCliente,GiroCliente,DireccionCliente,Facturaguia,Tipo,Tamano,Cantidad,NombreCertificador,ApellidoCertificador) " +
+                "values   (0,0, @FechaAprovacion, @CamaraCodigo, @Cliente, " +
+                " @RutCliente,@GiroCliente,@DireccionCliente,@Facturaguia,@Tipo,@Tamano,@Cantidad,@NombreCertificador,@ApellidoCertificador) ";
+
+
+            Command.Parameters.AddWithValue("@FechaAprovacion", fecha);
+            Command.Parameters.AddWithValue("@CamaraCodigo", codigocamara);
+            Command.Parameters.AddWithValue("@Cliente", nombreclient);
+            Command.Parameters.AddWithValue("@RutCliente", rutclient);
+            Command.Parameters.AddWithValue("@GiroCliente", giroclient);
+            Command.Parameters.AddWithValue("@DireccionCliente", direccionclient);
+            Command.Parameters.AddWithValue("@Facturaguia", facturaguia);
+            Command.Parameters.AddWithValue("@Tipo", tipo);
+            Command.Parameters.AddWithValue("@Tamano", tamano);
+            Command.Parameters.AddWithValue("@Cantidad", cantidad);
+            Command.Parameters.AddWithValue("@NombreCertificador", nombrecert);
+            Command.Parameters.AddWithValue("@ApellidoCertificador", apellidocert);
+
+            SQLiteDataReader query = Command.ExecuteReader();
+
+            while (query.Read())
+            {
+                Console.WriteLine(query.GetString(0));
+
+            }
+
+            m_dbConnection.Close();
+
+            //**************************************************************************************************
+            m_dbConnection.Open();
+
+            Command = new SQLiteCommand();
+            Command.Connection = m_dbConnection;
+            Command.CommandText = "SELECT Certificacion_id from Certificacion order by Certificacion_id DESC limit 1";
+            query = Command.ExecuteReader();
+
+            while (query.Read())
+            {
+                Certificacion_id = query.GetInt16(0);
+            }
+
+            m_dbConnection.Close();
+
+
+            DateTime fechainicio = DateTime.Parse(fecha + " " + hora);
+
+            return Certificacion_id;
+
+
+        }
+        //**************************************************************************************************
         private void generaDatos(string nombrecert, string apellidocert, string nombreclient, string giroclient, string direccionclient,
             string rutclient, string codigocamara, string tamano, string tipo, string cantidad, string facturaguia, string fecha, string hora) {
 
@@ -1155,24 +1360,56 @@ namespace WinCert
 
                 //------------------------------------------------------------------
 
+                //           public Boolean EnCertificacion = false;
+                //public int idCertificadoenCurso = 0;
+                //public int esPerandoCumplirTiempoparaCer = 0;
+
+                //public int tiempoenCertificacion = 0;
+
+                if (EnCertificacion == false && idCertificadoenCurso == 0 && esPerandoCumplirTiempoparaCer == false) {
+
+                        idCertificadoenCurso=ingresaCertificacion(nombrecertificador, apellidocertificador, nombrecliente, girocliente, direccioncliente, rutcliente,
+                          codigocamara, tamano, tipo, cantidad, facturaguia, fechageneracion, horageneracion);
+
+                    iniciaCertificacion();
 
 
 
-                label8AdvertenciaGeneracion.Text = "";
+
+                                         }
+
+                 label8AdvertenciaGeneracion.Text = "";
 
 
-                EstadoText.Text = "En certificacion";
-                EstadoText.BackColor = Color.Green;
-
-                TiempoInicio.Text = DateTime.Now.ToString();
-
-                while (true) {
-
-                    break;
-
-                }
+         
 
             }
+
+        }
+
+
+        private void iniciaCertificacion() {
+
+
+            if (InvokeRequired)
+                Invoke(new Action(() =>   botonIniciaReporte.Enabled = false    ));
+
+
+            if (InvokeRequired)
+                Invoke(new Action(() => botonCancelar.Enabled = true  ));
+
+
+
+            EstadoText.Text = "En certificacion";
+            EstadoText.BackColor = Color.Green;
+
+            TiempoInicio.Text = DateTime.Now.ToString();
+            tiempoenCertificacion = 0;
+
+            EnCertificacion = true;
+            esPerandoCumplirTiempoparaCer = true;
+
+            fechaInicioCertificacion = DateTime.Now;
 
         }
 
@@ -1185,5 +1422,31 @@ namespace WinCert
         {
 
         }
+
+        private void BotonCancelar_Click(object sender, EventArgs e)
+        {
+
+            CancelarOTerminarCertificacion();
+
     }
+
+
+        private void CancelarOTerminarCertificacion() {
+
+            botonCancelar.Enabled = false;
+            botonIniciaReporte.Enabled = true;
+
+            EstadoText.Text = "Pause";
+            EstadoText.BackColor = Color.Red;
+
+            EnCertificacion = false;
+            esPerandoCumplirTiempoparaCer = false;
+
+            idCertificadoenCurso = 0;
+            tiempoenCertificacion = 0;
+            fechaInicioCertificacion = DateTime.Now;
+
+        }
+
+}
 }

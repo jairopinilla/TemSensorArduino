@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label11certadver = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,6 +41,10 @@
             this.Grafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.EstadoText = new System.Windows.Forms.Label();
+            this.minutoEnCertificacion = new System.Windows.Forms.TextBox();
+            this.TiempoInicio = new System.Windows.Forms.DateTimePicker();
+            this.botonIniciaReporte = new System.Windows.Forms.Button();
             this.label8AdvertenciaGeneracion = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.chart1GraficoGenera = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -96,10 +100,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.botonIniciaReporte = new System.Windows.Forms.Button();
-            this.TiempoInicio = new System.Windows.Forms.DateTimePicker();
-            this.minutoEnCertificacion = new System.Windows.Forms.TextBox();
-            this.EstadoText = new System.Windows.Forms.Label();
+            this.botonCancelar = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertificaciones)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -189,10 +190,10 @@
             this.Grafico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea5.Name = "ChartArea1";
-            this.Grafico.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.Grafico.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.Grafico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Grafico.Legends.Add(legend1);
             this.Grafico.Location = new System.Drawing.Point(3, 3);
             this.Grafico.MinimumSize = new System.Drawing.Size(700, 400);
             this.Grafico.Name = "Grafico";
@@ -223,6 +224,7 @@
             // tabPage4
             // 
             this.tabPage4.AccessibleName = "GeneracionTab";
+            this.tabPage4.Controls.Add(this.botonCancelar);
             this.tabPage4.Controls.Add(this.EstadoText);
             this.tabPage4.Controls.Add(this.minutoEnCertificacion);
             this.tabPage4.Controls.Add(this.TiempoInicio);
@@ -253,6 +255,43 @@
             this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
+            // EstadoText
+            // 
+            this.EstadoText.AutoSize = true;
+            this.EstadoText.ForeColor = System.Drawing.Color.Red;
+            this.EstadoText.Location = new System.Drawing.Point(559, 176);
+            this.EstadoText.Name = "EstadoText";
+            this.EstadoText.Size = new System.Drawing.Size(37, 13);
+            this.EstadoText.TabIndex = 24;
+            this.EstadoText.Text = "Pause";
+            this.EstadoText.Click += new System.EventHandler(this.EstadoText_Click);
+            // 
+            // minutoEnCertificacion
+            // 
+            this.minutoEnCertificacion.Location = new System.Drawing.Point(503, 171);
+            this.minutoEnCertificacion.Name = "minutoEnCertificacion";
+            this.minutoEnCertificacion.Size = new System.Drawing.Size(50, 20);
+            this.minutoEnCertificacion.TabIndex = 23;
+            // 
+            // TiempoInicio
+            // 
+            this.TiempoInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.TiempoInicio.Location = new System.Drawing.Point(434, 171);
+            this.TiempoInicio.Name = "TiempoInicio";
+            this.TiempoInicio.Size = new System.Drawing.Size(63, 20);
+            this.TiempoInicio.TabIndex = 22;
+            this.TiempoInicio.ValueChanged += new System.EventHandler(this.TiempoInicio_ValueChanged);
+            // 
+            // botonIniciaReporte
+            // 
+            this.botonIniciaReporte.Location = new System.Drawing.Point(698, 171);
+            this.botonIniciaReporte.Name = "botonIniciaReporte";
+            this.botonIniciaReporte.Size = new System.Drawing.Size(154, 23);
+            this.botonIniciaReporte.TabIndex = 21;
+            this.botonIniciaReporte.Text = "Iniciar Reporte";
+            this.botonIniciaReporte.UseVisualStyleBackColor = true;
+            this.botonIniciaReporte.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // label8AdvertenciaGeneracion
             // 
             this.label8AdvertenciaGeneracion.AutoSize = true;
@@ -276,10 +315,10 @@
             // 
             this.chart1GraficoGenera.BorderlineColor = System.Drawing.Color.Black;
             this.chart1GraficoGenera.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.Name = "ChartArea1";
-            this.chart1GraficoGenera.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart1GraficoGenera.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chart1GraficoGenera.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1GraficoGenera.Legends.Add(legend2);
             this.chart1GraficoGenera.Location = new System.Drawing.Point(21, 200);
             this.chart1GraficoGenera.Name = "chart1GraficoGenera";
             this.chart1GraficoGenera.Size = new System.Drawing.Size(831, 567);
@@ -816,42 +855,15 @@
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // botonIniciaReporte
+            // botonCancelar
             // 
-            this.botonIniciaReporte.Location = new System.Drawing.Point(698, 171);
-            this.botonIniciaReporte.Name = "botonIniciaReporte";
-            this.botonIniciaReporte.Size = new System.Drawing.Size(154, 23);
-            this.botonIniciaReporte.TabIndex = 21;
-            this.botonIniciaReporte.Text = "Iniciar Reporte";
-            this.botonIniciaReporte.UseVisualStyleBackColor = true;
-            this.botonIniciaReporte.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // TiempoInicio
-            // 
-            this.TiempoInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.TiempoInicio.Location = new System.Drawing.Point(434, 171);
-            this.TiempoInicio.Name = "TiempoInicio";
-            this.TiempoInicio.Size = new System.Drawing.Size(63, 20);
-            this.TiempoInicio.TabIndex = 22;
-            this.TiempoInicio.ValueChanged += new System.EventHandler(this.TiempoInicio_ValueChanged);
-            // 
-            // minutoEnCertificacion
-            // 
-            this.minutoEnCertificacion.Location = new System.Drawing.Point(503, 171);
-            this.minutoEnCertificacion.Name = "minutoEnCertificacion";
-            this.minutoEnCertificacion.Size = new System.Drawing.Size(50, 20);
-            this.minutoEnCertificacion.TabIndex = 23;
-            // 
-            // EstadoText
-            // 
-            this.EstadoText.AutoSize = true;
-            this.EstadoText.ForeColor = System.Drawing.Color.Red;
-            this.EstadoText.Location = new System.Drawing.Point(559, 176);
-            this.EstadoText.Name = "EstadoText";
-            this.EstadoText.Size = new System.Drawing.Size(37, 13);
-            this.EstadoText.TabIndex = 24;
-            this.EstadoText.Text = "Pause";
-            this.EstadoText.Click += new System.EventHandler(this.EstadoText_Click);
+            this.botonCancelar.Location = new System.Drawing.Point(698, 139);
+            this.botonCancelar.Name = "botonCancelar";
+            this.botonCancelar.Size = new System.Drawing.Size(154, 23);
+            this.botonCancelar.TabIndex = 25;
+            this.botonCancelar.Text = "Cancelar";
+            this.botonCancelar.UseVisualStyleBackColor = true;
+            this.botonCancelar.Click += new System.EventHandler(this.BotonCancelar_Click);
             // 
             // Certificacion
             // 
@@ -961,5 +973,6 @@
         private System.Windows.Forms.DateTimePicker TiempoInicio;
         private System.Windows.Forms.Label EstadoText;
         private System.Windows.Forms.TextBox minutoEnCertificacion;
+        private System.Windows.Forms.Button botonCancelar;
     }
 }
