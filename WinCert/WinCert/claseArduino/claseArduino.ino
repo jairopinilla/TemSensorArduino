@@ -34,7 +34,7 @@ void loop() {
 
  // Serial.println(ktc1.readCelsius());
  // Serial.println(ktc2.readCelsius());
-//  Serial.println(ktc3.readCelsius());
+//  Serial.println(ktc3.readCelsius()); 
    
   serializeJson(doc, Serial);
   Serial.println("");

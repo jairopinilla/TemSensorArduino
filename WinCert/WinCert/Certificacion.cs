@@ -962,7 +962,7 @@ namespace WinCert
                 {
                     nombrecliente = query.GetString(0);
                     girocliente = query.GetString(1);
-                    direccioncliente = query.GetString(2);
+                    direccioncliente = query.GetString(3);
                 }
 
                 m_dbConnection.Close();
@@ -1355,7 +1355,7 @@ namespace WinCert
                 {
                     nombrecliente = query.GetString(0);
                     girocliente = query.GetString(1);
-                    direccioncliente = query.GetString(2);
+                    direccioncliente = query.GetString(3);
                 }
 
                 m_dbConnection.Close();
