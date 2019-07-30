@@ -61,6 +61,8 @@ namespace WinCert
         private void Certificacion_Load(object sender, EventArgs e)
         {
 
+            CheckForIllegalCrossThreadCalls = false;
+
             TiempoInicio.Enabled = false;
             minutoEnCertificacion.Enabled = false;
 
@@ -1390,14 +1392,12 @@ namespace WinCert
 
         private void iniciaCertificacion() {
 
+            button1VerReporte.Enabled = false;
+            button1Limpiargeneracion.Enabled = false;
+            botonIniciaReporte.Enabled = false;
+            botonCancelar.Enabled = true;
 
-            if (InvokeRequired)
-                Invoke(new Action(() =>   botonIniciaReporte.Enabled = false    ));
-
-
-            if (InvokeRequired)
-                Invoke(new Action(() => botonCancelar.Enabled = true  ));
-
+            panel1Controles.Enabled = false;
 
 
             EstadoText.Text = "En certificacion";
@@ -1433,6 +1433,10 @@ namespace WinCert
 
         private void CancelarOTerminarCertificacion() {
 
+            button1VerReporte.Enabled = true;
+            button1Limpiargeneracion.Enabled = true;
+            panel1Controles.Enabled = true;
+
             botonCancelar.Enabled = false;
             botonIniciaReporte.Enabled = true;
 
@@ -1448,5 +1452,9 @@ namespace WinCert
 
         }
 
-}
+        private void Label11_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

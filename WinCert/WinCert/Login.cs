@@ -26,6 +26,8 @@ namespace WinCert
         {
             InitializeComponent();
 
+            CheckForIllegalCrossThreadCalls = false;
+
             textcodigoinput.Text = "";
 
             Up();

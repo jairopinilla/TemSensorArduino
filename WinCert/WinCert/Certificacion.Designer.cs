@@ -101,6 +101,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.botonCancelar = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel1Controles = new System.Windows.Forms.Panel();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCertificaciones)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -114,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1Certificadores)).BeginInit();
             this.Camara.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1Camara)).BeginInit();
+            this.panel1Controles.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -224,29 +228,18 @@
             // tabPage4
             // 
             this.tabPage4.AccessibleName = "GeneracionTab";
+            this.tabPage4.Controls.Add(this.panel1Controles);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.label11);
             this.tabPage4.Controls.Add(this.botonCancelar);
             this.tabPage4.Controls.Add(this.EstadoText);
             this.tabPage4.Controls.Add(this.minutoEnCertificacion);
             this.tabPage4.Controls.Add(this.TiempoInicio);
             this.tabPage4.Controls.Add(this.botonIniciaReporte);
-            this.tabPage4.Controls.Add(this.label8AdvertenciaGeneracion);
-            this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.chart1GraficoGenera);
-            this.tabPage4.Controls.Add(this.label9);
-            this.tabPage4.Controls.Add(this.label8);
-            this.tabPage4.Controls.Add(this.label7);
-            this.tabPage4.Controls.Add(this.textBox1GeneraCantidad);
-            this.tabPage4.Controls.Add(this.textBox1GeneraTamano);
-            this.tabPage4.Controls.Add(this.textBox1GeneraTipo);
-            this.tabPage4.Controls.Add(this.textBox1GEneraFacturaGuia);
             this.tabPage4.Controls.Add(this.button1VerReporte);
-            this.tabPage4.Controls.Add(this.dateTimePicker1generaciontime);
             this.tabPage4.Controls.Add(this.button1Limpiargeneracion);
             this.tabPage4.Controls.Add(this.button1Generar);
-            this.tabPage4.Controls.Add(this.dateTimePicker1InicioGeneracion);
-            this.tabPage4.Controls.Add(this.comboBox1Certificador);
-            this.tabPage4.Controls.Add(this.comboBox1Camara);
-            this.tabPage4.Controls.Add(this.comboBox1Cliente);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1153, 806);
@@ -259,7 +252,7 @@
             // 
             this.EstadoText.AutoSize = true;
             this.EstadoText.ForeColor = System.Drawing.Color.Red;
-            this.EstadoText.Location = new System.Drawing.Point(559, 176);
+            this.EstadoText.Location = new System.Drawing.Point(612, 178);
             this.EstadoText.Name = "EstadoText";
             this.EstadoText.Size = new System.Drawing.Size(37, 13);
             this.EstadoText.TabIndex = 24;
@@ -268,15 +261,15 @@
             // 
             // minutoEnCertificacion
             // 
-            this.minutoEnCertificacion.Location = new System.Drawing.Point(503, 171);
+            this.minutoEnCertificacion.Location = new System.Drawing.Point(543, 173);
             this.minutoEnCertificacion.Name = "minutoEnCertificacion";
-            this.minutoEnCertificacion.Size = new System.Drawing.Size(50, 20);
+            this.minutoEnCertificacion.Size = new System.Drawing.Size(63, 20);
             this.minutoEnCertificacion.TabIndex = 23;
             // 
             // TiempoInicio
             // 
             this.TiempoInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.TiempoInicio.Location = new System.Drawing.Point(434, 171);
+            this.TiempoInicio.Location = new System.Drawing.Point(543, 142);
             this.TiempoInicio.Name = "TiempoInicio";
             this.TiempoInicio.Size = new System.Drawing.Size(63, 20);
             this.TiempoInicio.TabIndex = 22;
@@ -296,7 +289,7 @@
             // 
             this.label8AdvertenciaGeneracion.AutoSize = true;
             this.label8AdvertenciaGeneracion.ForeColor = System.Drawing.Color.Crimson;
-            this.label8AdvertenciaGeneracion.Location = new System.Drawing.Point(545, 25);
+            this.label8AdvertenciaGeneracion.Location = new System.Drawing.Point(546, 14);
             this.label8AdvertenciaGeneracion.Name = "label8AdvertenciaGeneracion";
             this.label8AdvertenciaGeneracion.Size = new System.Drawing.Size(41, 13);
             this.label8AdvertenciaGeneracion.TabIndex = 20;
@@ -305,7 +298,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(490, 82);
+            this.label10.Location = new System.Drawing.Point(491, 71);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 13);
             this.label10.TabIndex = 19;
@@ -328,7 +321,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(493, 56);
+            this.label9.Location = new System.Drawing.Point(494, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 18;
@@ -337,7 +330,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(237, 82);
+            this.label8.Location = new System.Drawing.Point(238, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 17;
@@ -346,7 +339,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(197, 55);
+            this.label7.Location = new System.Drawing.Point(198, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 16;
@@ -354,7 +347,7 @@
             // 
             // textBox1GeneraCantidad
             // 
-            this.textBox1GeneraCantidad.Location = new System.Drawing.Point(545, 81);
+            this.textBox1GeneraCantidad.Location = new System.Drawing.Point(546, 70);
             this.textBox1GeneraCantidad.Name = "textBox1GeneraCantidad";
             this.textBox1GeneraCantidad.Size = new System.Drawing.Size(150, 20);
             this.textBox1GeneraCantidad.TabIndex = 15;
@@ -363,7 +356,7 @@
             // 
             // textBox1GeneraTamano
             // 
-            this.textBox1GeneraTamano.Location = new System.Drawing.Point(545, 53);
+            this.textBox1GeneraTamano.Location = new System.Drawing.Point(546, 42);
             this.textBox1GeneraTamano.Name = "textBox1GeneraTamano";
             this.textBox1GeneraTamano.Size = new System.Drawing.Size(150, 20);
             this.textBox1GeneraTamano.TabIndex = 14;
@@ -371,14 +364,14 @@
             // 
             // textBox1GeneraTipo
             // 
-            this.textBox1GeneraTipo.Location = new System.Drawing.Point(271, 80);
+            this.textBox1GeneraTipo.Location = new System.Drawing.Point(272, 69);
             this.textBox1GeneraTipo.Name = "textBox1GeneraTipo";
             this.textBox1GeneraTipo.Size = new System.Drawing.Size(198, 20);
             this.textBox1GeneraTipo.TabIndex = 13;
             // 
             // textBox1GEneraFacturaGuia
             // 
-            this.textBox1GEneraFacturaGuia.Location = new System.Drawing.Point(271, 52);
+            this.textBox1GEneraFacturaGuia.Location = new System.Drawing.Point(272, 41);
             this.textBox1GEneraFacturaGuia.Name = "textBox1GEneraFacturaGuia";
             this.textBox1GEneraFacturaGuia.Size = new System.Drawing.Size(198, 20);
             this.textBox1GEneraFacturaGuia.TabIndex = 12;
@@ -397,7 +390,7 @@
             // 
             this.dateTimePicker1generaciontime.CustomFormat = "hh:mm:ss";
             this.dateTimePicker1generaciontime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1generaciontime.Location = new System.Drawing.Point(382, 25);
+            this.dateTimePicker1generaciontime.Location = new System.Drawing.Point(383, 14);
             this.dateTimePicker1generaciontime.Name = "dateTimePicker1generaciontime";
             this.dateTimePicker1generaciontime.ShowUpDown = true;
             this.dateTimePicker1generaciontime.Size = new System.Drawing.Size(87, 20);
@@ -425,7 +418,7 @@
             // 
             // dateTimePicker1InicioGeneracion
             // 
-            this.dateTimePicker1InicioGeneracion.Location = new System.Drawing.Point(200, 25);
+            this.dateTimePicker1InicioGeneracion.Location = new System.Drawing.Point(201, 14);
             this.dateTimePicker1InicioGeneracion.MinDate = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
             this.dateTimePicker1InicioGeneracion.Name = "dateTimePicker1InicioGeneracion";
             this.dateTimePicker1InicioGeneracion.Size = new System.Drawing.Size(176, 20);
@@ -436,7 +429,7 @@
             // 
             this.comboBox1Certificador.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBox1Certificador.FormattingEnabled = true;
-            this.comboBox1Certificador.Location = new System.Drawing.Point(21, 80);
+            this.comboBox1Certificador.Location = new System.Drawing.Point(22, 69);
             this.comboBox1Certificador.Name = "comboBox1Certificador";
             this.comboBox1Certificador.Size = new System.Drawing.Size(156, 21);
             this.comboBox1Certificador.TabIndex = 2;
@@ -446,7 +439,7 @@
             // 
             this.comboBox1Camara.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBox1Camara.FormattingEnabled = true;
-            this.comboBox1Camara.Location = new System.Drawing.Point(21, 52);
+            this.comboBox1Camara.Location = new System.Drawing.Point(22, 41);
             this.comboBox1Camara.Name = "comboBox1Camara";
             this.comboBox1Camara.Size = new System.Drawing.Size(156, 21);
             this.comboBox1Camara.TabIndex = 1;
@@ -456,7 +449,7 @@
             // 
             this.comboBox1Cliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBox1Cliente.FormattingEnabled = true;
-            this.comboBox1Cliente.Location = new System.Drawing.Point(21, 25);
+            this.comboBox1Cliente.Location = new System.Drawing.Point(22, 14);
             this.comboBox1Cliente.Name = "comboBox1Cliente";
             this.comboBox1Cliente.Size = new System.Drawing.Size(156, 21);
             this.comboBox1Cliente.TabIndex = 0;
@@ -865,6 +858,46 @@
             this.botonCancelar.UseVisualStyleBackColor = true;
             this.botonCancelar.Click += new System.EventHandler(this.BotonCancelar_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(420, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 13);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Hora inicio certificacion";
+            this.label11.Click += new System.EventHandler(this.Label11_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(420, 176);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 13);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Minutos en certifcacion";
+            // 
+            // panel1Controles
+            // 
+            this.panel1Controles.Controls.Add(this.comboBox1Cliente);
+            this.panel1Controles.Controls.Add(this.comboBox1Camara);
+            this.panel1Controles.Controls.Add(this.comboBox1Certificador);
+            this.panel1Controles.Controls.Add(this.dateTimePicker1InicioGeneracion);
+            this.panel1Controles.Controls.Add(this.dateTimePicker1generaciontime);
+            this.panel1Controles.Controls.Add(this.textBox1GEneraFacturaGuia);
+            this.panel1Controles.Controls.Add(this.textBox1GeneraTipo);
+            this.panel1Controles.Controls.Add(this.textBox1GeneraTamano);
+            this.panel1Controles.Controls.Add(this.label8AdvertenciaGeneracion);
+            this.panel1Controles.Controls.Add(this.textBox1GeneraCantidad);
+            this.panel1Controles.Controls.Add(this.label10);
+            this.panel1Controles.Controls.Add(this.label7);
+            this.panel1Controles.Controls.Add(this.label8);
+            this.panel1Controles.Controls.Add(this.label9);
+            this.panel1Controles.Location = new System.Drawing.Point(21, 16);
+            this.panel1Controles.Name = "panel1Controles";
+            this.panel1Controles.Size = new System.Drawing.Size(831, 117);
+            this.panel1Controles.TabIndex = 28;
+            // 
             // Certificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -898,6 +931,8 @@
             this.Camara.ResumeLayout(false);
             this.Camara.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1Camara)).EndInit();
+            this.panel1Controles.ResumeLayout(false);
+            this.panel1Controles.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -974,5 +1009,8 @@
         private System.Windows.Forms.Label EstadoText;
         private System.Windows.Forms.TextBox minutoEnCertificacion;
         private System.Windows.Forms.Button botonCancelar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel1Controles;
+        private System.Windows.Forms.Label label12;
     }
 }

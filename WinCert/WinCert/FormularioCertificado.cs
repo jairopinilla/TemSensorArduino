@@ -165,7 +165,7 @@ namespace WinCert
             chartGrafico.Series["Sensor 2"].YValueMembers = "Sensor2";
             chartGrafico.Series["Sensor 3"].YValueMembers = "Sensor3";
 
-            chartGrafico.ChartAreas[0].AxisY.Minimum = 45;
+            chartGrafico.ChartAreas[0].AxisY.Minimum = 0;
 
             chartGrafico.DataBind();
 
@@ -280,6 +280,11 @@ namespace WinCert
         }
 
         private void label8fechaactual_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox2Direccion_TextChanged(object sender, EventArgs e)
         {
 
         }
