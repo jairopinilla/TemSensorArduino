@@ -31,8 +31,8 @@ namespace WinCert
         public int idCertificadoenCurso = 0;
         public int tiempoenCertificacion = 0;
 
-        public int temperaturaParaCertificar = 0;
-        public int MinutosTerminarCertificacion = 2;
+        public int temperaturaParaCertificar = 56;
+        public int MinutosTerminarCertificacion = 30;
 
 
         public DateTime fechaInicioCertificacion;
@@ -330,7 +330,7 @@ namespace WinCert
 
             float temp1 = (float)jsonData["temp1"];
             float temp2 = (float)jsonData["temp2"];
-            float temp3 = temp2 + multiplicador * 1;
+            float temp3 = (float)jsonData["temp3"];
 
             temperatura1 = temp1;
             temperatura2 = temp2;
