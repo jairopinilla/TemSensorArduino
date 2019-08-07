@@ -217,5 +217,10 @@ namespace WinCert
             }
 
         }
+
+        private void Textcodigoinput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
