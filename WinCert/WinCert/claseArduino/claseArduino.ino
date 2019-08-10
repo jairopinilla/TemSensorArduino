@@ -3,7 +3,7 @@
 
 int ktcSO1 = 13;
 int ktcCS1 = 12;
-int ktcCLK1 = 11;
+int ktcCLK1 = 11; 
 
 int ktcSO2 = 10;
 int ktcCS2 = 9;
