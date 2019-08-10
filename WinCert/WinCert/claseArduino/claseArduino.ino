@@ -5,13 +5,13 @@ int ktcSO1 = 13;
 int ktcCS1 = 12;
 int ktcCLK1 = 11; 
 
-int ktcSO2 = 10;
-int ktcCS2 = 9;
-int ktcCLK2 = 8;
+int ktcSO2 = 8;
+int ktcCS2 = 7;
+int ktcCLK2 = 6;
 
-int ktcSO3 = 6;
-int ktcCS3 = 5;
-int ktcCLK3 = 4;
+int ktcSO3 = 4;
+int ktcCS3 = 3;
+int ktcCLK3 = 2;
 
 MAX6675 ktc2(ktcCLK2, ktcCS2, ktcSO2);
 MAX6675 ktc3(ktcCLK3, ktcCS3, ktcSO3);
