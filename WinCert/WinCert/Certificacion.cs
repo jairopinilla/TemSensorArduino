@@ -32,7 +32,7 @@ namespace WinCert
         public int tiempoenCertificacion = 0;
 
         public int temperaturaParaCertificar = 56;
-        public int MinutosTerminarCertificacion = 30;
+        public int MinutosTerminarCertificacion = 40;
 
 
         public DateTime fechaInicioCertificacion;

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panelCertificado = new System.Windows.Forms.Panel();
             this.label8fechaactual = new System.Windows.Forms.Label();
             this.textBox2ApellidoCert = new System.Windows.Forms.TextBox();
@@ -142,12 +142,12 @@
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(150, 694);
+            this.textBox1.Location = new System.Drawing.Point(152, 644);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 75);
+            this.textBox1.Size = new System.Drawing.Size(295, 100);
             this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "ECOMAD S.p.A Comercializadora de Maderas y Embalajes Direccion 10 Poniente Parcel" +
+            this.textBox1.Text = "FOCSAR S.p.A Comercializadora de Maderas y Embalajes Direccion 10 Poniente Parcel" +
     "a N 263 Lote C Paine Telefono: (56-2) 8251336";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -158,7 +158,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.24657F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.75343F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanel4.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label13, 2, 0);
@@ -200,7 +200,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(276, 4);
+            this.label13.Location = new System.Drawing.Point(274, 4);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 2;
@@ -210,7 +210,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(451, 4);
+            this.label14.Location = new System.Drawing.Point(449, 4);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 3;
@@ -229,13 +229,13 @@
             this.textBox2Tipo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2Tipo.Location = new System.Drawing.Point(99, 31);
             this.textBox2Tipo.Name = "textBox2Tipo";
-            this.textBox2Tipo.Size = new System.Drawing.Size(170, 13);
+            this.textBox2Tipo.Size = new System.Drawing.Size(168, 13);
             this.textBox2Tipo.TabIndex = 5;
             // 
             // textBox2Tamano
             // 
             this.textBox2Tamano.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Tamano.Location = new System.Drawing.Point(276, 31);
+            this.textBox2Tamano.Location = new System.Drawing.Point(274, 31);
             this.textBox2Tamano.Name = "textBox2Tamano";
             this.textBox2Tamano.Size = new System.Drawing.Size(164, 13);
             this.textBox2Tamano.TabIndex = 6;
@@ -243,7 +243,7 @@
             // textBox2Cantidad
             // 
             this.textBox2Cantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Cantidad.Location = new System.Drawing.Point(451, 31);
+            this.textBox2Cantidad.Location = new System.Drawing.Point(449, 31);
             this.textBox2Cantidad.Name = "textBox2Cantidad";
             this.textBox2Cantidad.Size = new System.Drawing.Size(86, 13);
             this.textBox2Cantidad.TabIndex = 7;
@@ -452,9 +452,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(236, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ECOMAD S.p.A";
+            this.label1.Text = "FOCSAR  S.p.A";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // tabControl1
             // 
@@ -513,10 +514,10 @@
             // 
             // chartGrafico
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartGrafico.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartGrafico.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chartGrafico.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartGrafico.Legends.Add(legend3);
             this.chartGrafico.Location = new System.Drawing.Point(22, 23);
             this.chartGrafico.Name = "chartGrafico";
             this.chartGrafico.Size = new System.Drawing.Size(554, 720);
@@ -559,7 +560,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(910, 982);
+            this.ClientSize = new System.Drawing.Size(927, 749);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1Guardar);
             this.Controls.Add(this.tabControl1);
