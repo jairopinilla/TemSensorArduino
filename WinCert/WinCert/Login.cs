@@ -121,7 +121,7 @@ namespace WinCert
                 insertCommand = new SQLiteCommand();
                 insertCommand.Connection = m_dbConnection;
                 insertCommand.CommandText = "INSERT INTO Camara VALUES (@Entry);";
-                insertCommand.Parameters.AddWithValue("@Entry", "CL 13136");
+                insertCommand.Parameters.AddWithValue("@Entry", "0000");
 
                 insertCommand.ExecuteReader();
 
@@ -215,6 +215,11 @@ namespace WinCert
             else {
                 MensajeError.Text = "Clave Erronea";
             }
+
+        }
+
+        private void Textcodigoinput_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

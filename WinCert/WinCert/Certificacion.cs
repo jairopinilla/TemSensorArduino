@@ -31,8 +31,8 @@ namespace WinCert
         public int idCertificadoenCurso = 0;
         public int tiempoenCertificacion = 0;
 
-        public int temperaturaParaCertificar = 0;
-        public int MinutosTerminarCertificacion = 2;
+        public int temperaturaParaCertificar = 56;
+        public int MinutosTerminarCertificacion = 40;
 
 
         public DateTime fechaInicioCertificacion;
@@ -70,17 +70,75 @@ namespace WinCert
             button1Generar.Visible = GeneraMula;
 
             ArduinoPort = new System.IO.Ports.SerialPort();
-            ArduinoPort.PortName = "COM3";  //sustituir por vuestro 
-            ArduinoPort.BaudRate = 9600;
+            Boolean errorEnConexion = false;
 
-            ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            
 
-            ArduinoPort.Open();
+            //*********************************************************************/
+            try
+            {
+                ArduinoPort.PortName = "COM3";  //sustituir por vuestro 
+                ArduinoPort.BaudRate = 9600;
+                ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                ArduinoPort.Open();
+                errorEnConexion = false;
 
+            }
+            catch(Exception ex)
+            {
+                errorEnConexion = true;
+
+            }
+
+            //*********************************************************************/
+
+            if (errorEnConexion == true)
+            {
+                try
+                {
+                    ArduinoPort.PortName = "COM4";  //sustituir por vuestro 
+                    ArduinoPort.BaudRate = 9600;
+                    ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                    ArduinoPort.Open();
+                    errorEnConexion = false;
+
+                }
+                catch (Exception ex)
+                {
+                    errorEnConexion = true;
+
+                }
+            }
+
+            //*********************************************************************/
+
+            if (errorEnConexion == true)
+            {
+                try
+                {
+                    ArduinoPort.PortName = "COM5";  //sustituir por vuestro 
+                    ArduinoPort.BaudRate = 9600;
+                    ArduinoPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                    ArduinoPort.Open();
+                    errorEnConexion = false;
+
+                }
+                catch (Exception ex)
+                {
+                    errorEnConexion = true;
+
+                }
+            }
+            /**************************************************************/
+
+            if (errorEnConexion == true)
+            {
+                System.Windows.Forms.MessageBox.Show("No se detectan sensores conectados");
+            }
 
             /**************************************************************/
 
-            chart1GraficoGenera.Series.Add("Sensor 1");
+                chart1GraficoGenera.Series.Add("Sensor 1");
             chart1GraficoGenera.Series.Add("Sensor 2");
             chart1GraficoGenera.Series.Add("Sensor 3");
 
@@ -328,17 +386,33 @@ namespace WinCert
             var random = new Random();
             int multiplicador = random.Next(0, 2);
 
-            float temp1 = (float)jsonData["temp1"];
-            float temp2 = (float)jsonData["temp2"];
-            float temp3 = temp2 + multiplicador * 1;
+            float temp1 = 0;
+            float temp2 = 0;
+            float temp3 = 0;
 
-            temperatura1 = temp1;
-            temperatura2 = temp2;
-            temperatura3 = temp3;
+            try
+            {
+                if (GeneraMula == false)
+                {
 
-            actualiza(temperatura1, temperatura2, temperatura3);
-            Console.WriteLine(temperatura1);
-            Console.WriteLine(indata);
+                    temp1 = (float)jsonData["temp1"];
+                    temp2 = (float)jsonData["temp2"];
+                    temp3 = (float)jsonData["temp3"];
+
+                    temperatura1 = temp1;
+                    temperatura2 = temp2;
+                    temperatura3 = temp3;
+
+                    actualiza(temperatura1, temperatura2, temperatura3);
+                    Console.WriteLine(temperatura1);
+                    Console.WriteLine(indata);
+                }
+
+            }
+            catch (Exception ex) {
+
+                System.Windows.Forms.MessageBox.Show("No se captan las temperaturas conecte la tarjeta");
+            }
 
             /*****************si esta en certificacion*****************************************************************/
 

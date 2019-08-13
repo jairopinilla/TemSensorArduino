@@ -43,7 +43,9 @@
             this.textcodigoinput.PasswordChar = '*';
             this.textcodigoinput.Size = new System.Drawing.Size(286, 31);
             this.textcodigoinput.TabIndex = 1;
+            this.textcodigoinput.Text = "ertifica2019";
             this.textcodigoinput.UseSystemPasswordChar = true;
+            this.textcodigoinput.TextChanged += new System.EventHandler(this.Textcodigoinput_TextChanged);
             // 
             // IngresarBoton
             // 
