@@ -150,7 +150,14 @@ namespace WinCert
             db.Fill(ds);
 
             dtLineaTemperaturasGenera = ds.Tables[0];
+            
+
+
+            System.Data.DataView view = new System.Data.DataView(dtLineaTemperaturasGenera);
+            System.Data.DataTable selected = view.ToTable("Selected", false, "Sensor1", "Sensor2", "Sensor3", "Fecha");
+
             chartGrafico.DataSource = dtLineaTemperaturasGenera;
+            dataTemperaturasGrid.DataSource = selected;
 
             conexion.Close();
 
@@ -213,6 +220,16 @@ namespace WinCert
         }
 
 
+        private void PrintTemperaturas() {
+
+            System.Drawing.Printing.PrintDocument doc = new PrintDocument();
+            doc.PrintPage += new PrintPageEventHandler(doc_PrintPageTemperaturas);
+            doc.Print();
+
+        }
+
+
+
         private void doc_PrintPage(object sender, PrintPageEventArgs e)
         {
             Bitmap bmp = new Bitmap(panelCertificado.Width, panelCertificado.Height);
@@ -255,6 +272,27 @@ namespace WinCert
             e.Graphics.DrawImage(bmp, 0, 0, tgtWidthMM, tgtHeightMM);
         }
 
+        private void doc_PrintPageTemperaturas(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(dataTemperaturasGrid.Width, dataTemperaturasGrid.Height);
+
+            float tgtWidthMM = 210;  //A4 paper size
+            float tgtHeightMM = 297;
+            float tgtWidthInches = tgtWidthMM / 25.4f;
+            float tgtHeightInches = tgtHeightMM / 25.4f;
+            float srcWidthPx = bmp.Width;
+            float srcHeightPx = bmp.Height;
+            float dpiX = srcWidthPx / tgtWidthInches;
+            float dpiY = srcHeightPx / tgtHeightInches;
+
+            bmp.SetResolution(dpiX, dpiY);
+
+            panelGrafico.DrawToBitmap(bmp, dataTemperaturasGrid.ClientRectangle);
+
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+            e.Graphics.DrawImage(bmp, 0, 0, tgtWidthMM, tgtHeightMM);
+        }
+
 
         private void button1imprimir_Click(object sender, EventArgs e)
         {
@@ -292,6 +330,25 @@ namespace WinCert
         private void Label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void PanelCertificado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonImprimirTemperatura_Click(object sender, EventArgs e)
+        {
+            int pixelsWidth = 612;
+            int pixelsHeight = 792;     //1 cm ~ 37.5      
+            paneltemperaturas.Size = new Size(pixelsWidth, pixelsHeight);
+
+            PrintTemperaturas();
         }
     }
 }

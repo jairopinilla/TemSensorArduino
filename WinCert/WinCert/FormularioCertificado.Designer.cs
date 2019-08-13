@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panelCertificado = new System.Windows.Forms.Panel();
             this.label8fechaactual = new System.Windows.Forms.Label();
             this.textBox2ApellidoCert = new System.Windows.Forms.TextBox();
@@ -70,6 +70,10 @@
             this.panelGrafico = new System.Windows.Forms.Panel();
             this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonImprimirTemperatura = new System.Windows.Forms.Button();
+            this.paneltemperaturas = new System.Windows.Forms.Panel();
+            this.dataTemperaturasGrid = new System.Windows.Forms.DataGridView();
             this.button1Guardar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panelCertificado.SuspendLayout();
@@ -82,6 +86,9 @@
             this.tabPage2.SuspendLayout();
             this.panelGrafico.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartGrafico)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.paneltemperaturas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTemperaturasGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCertificado
@@ -108,6 +115,7 @@
             this.panelCertificado.Padding = new System.Windows.Forms.Padding(30);
             this.panelCertificado.Size = new System.Drawing.Size(612, 792);
             this.panelCertificado.TabIndex = 0;
+            this.panelCertificado.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCertificado_Paint);
             // 
             // label8fechaactual
             // 
@@ -158,7 +166,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.24657F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.75343F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel4.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label13, 2, 0);
@@ -190,7 +198,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(99, 4);
+            this.label12.Location = new System.Drawing.Point(97, 4);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 1;
@@ -200,7 +208,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(274, 4);
+            this.label13.Location = new System.Drawing.Point(270, 4);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 2;
@@ -210,7 +218,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(449, 4);
+            this.label14.Location = new System.Drawing.Point(445, 4);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 3;
@@ -221,21 +229,21 @@
             this.textBox2FacturaGuia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2FacturaGuia.Location = new System.Drawing.Point(7, 31);
             this.textBox2FacturaGuia.Name = "textBox2FacturaGuia";
-            this.textBox2FacturaGuia.Size = new System.Drawing.Size(85, 13);
+            this.textBox2FacturaGuia.Size = new System.Drawing.Size(83, 13);
             this.textBox2FacturaGuia.TabIndex = 4;
             // 
             // textBox2Tipo
             // 
             this.textBox2Tipo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Tipo.Location = new System.Drawing.Point(99, 31);
+            this.textBox2Tipo.Location = new System.Drawing.Point(97, 31);
             this.textBox2Tipo.Name = "textBox2Tipo";
-            this.textBox2Tipo.Size = new System.Drawing.Size(168, 13);
+            this.textBox2Tipo.Size = new System.Drawing.Size(166, 13);
             this.textBox2Tipo.TabIndex = 5;
             // 
             // textBox2Tamano
             // 
             this.textBox2Tamano.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Tamano.Location = new System.Drawing.Point(274, 31);
+            this.textBox2Tamano.Location = new System.Drawing.Point(270, 31);
             this.textBox2Tamano.Name = "textBox2Tamano";
             this.textBox2Tamano.Size = new System.Drawing.Size(164, 13);
             this.textBox2Tamano.TabIndex = 6;
@@ -243,7 +251,7 @@
             // textBox2Cantidad
             // 
             this.textBox2Cantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Cantidad.Location = new System.Drawing.Point(449, 31);
+            this.textBox2Cantidad.Location = new System.Drawing.Point(445, 31);
             this.textBox2Cantidad.Name = "textBox2Cantidad";
             this.textBox2Cantidad.Size = new System.Drawing.Size(86, 13);
             this.textBox2Cantidad.TabIndex = 7;
@@ -461,6 +469,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 47);
             this.tabControl1.MinimumSize = new System.Drawing.Size(800, 800);
             this.tabControl1.Name = "tabControl1";
@@ -479,6 +488,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Certificado";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.TabPage1_Click);
             // 
             // button1imprimir
             // 
@@ -514,10 +524,10 @@
             // 
             // chartGrafico
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartGrafico.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartGrafico.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.chartGrafico.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartGrafico.Legends.Add(legend5);
             this.chartGrafico.Location = new System.Drawing.Point(22, 23);
             this.chartGrafico.Name = "chartGrafico";
             this.chartGrafico.Size = new System.Drawing.Size(554, 720);
@@ -534,6 +544,53 @@
             this.button1.Text = "Imprimir Grafico";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.buttonImprimirTemperatura);
+            this.tabPage3.Controls.Add(this.paneltemperaturas);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(792, 890);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Temperaturas";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonImprimirTemperatura
+            // 
+            this.buttonImprimirTemperatura.Location = new System.Drawing.Point(425, 22);
+            this.buttonImprimirTemperatura.Name = "buttonImprimirTemperatura";
+            this.buttonImprimirTemperatura.Size = new System.Drawing.Size(157, 23);
+            this.buttonImprimirTemperatura.TabIndex = 1;
+            this.buttonImprimirTemperatura.Text = "ImprimirTemperatura";
+            this.buttonImprimirTemperatura.UseVisualStyleBackColor = true;
+            this.buttonImprimirTemperatura.Click += new System.EventHandler(this.ButtonImprimirTemperatura_Click);
+            // 
+            // paneltemperaturas
+            // 
+            this.paneltemperaturas.Controls.Add(this.dataTemperaturasGrid);
+            this.paneltemperaturas.Location = new System.Drawing.Point(28, 75);
+            this.paneltemperaturas.Name = "paneltemperaturas";
+            this.paneltemperaturas.Size = new System.Drawing.Size(554, 720);
+            this.paneltemperaturas.TabIndex = 0;
+            // 
+            // dataTemperaturasGrid
+            // 
+            this.dataTemperaturasGrid.AllowUserToAddRows = false;
+            this.dataTemperaturasGrid.AllowUserToDeleteRows = false;
+            this.dataTemperaturasGrid.AllowUserToOrderColumns = true;
+            this.dataTemperaturasGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataTemperaturasGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataTemperaturasGrid.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataTemperaturasGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTemperaturasGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataTemperaturasGrid.Location = new System.Drawing.Point(0, 0);
+            this.dataTemperaturasGrid.MultiSelect = false;
+            this.dataTemperaturasGrid.Name = "dataTemperaturasGrid";
+            this.dataTemperaturasGrid.ReadOnly = true;
+            this.dataTemperaturasGrid.Size = new System.Drawing.Size(554, 720);
+            this.dataTemperaturasGrid.TabIndex = 0;
             // 
             // button1Guardar
             // 
@@ -583,6 +640,9 @@
             this.tabPage2.ResumeLayout(false);
             this.panelGrafico.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartGrafico)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.paneltemperaturas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataTemperaturasGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -631,5 +691,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label8fechaactual;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button buttonImprimirTemperatura;
+        private System.Windows.Forms.Panel paneltemperaturas;
+        private System.Windows.Forms.DataGridView dataTemperaturasGrid;
     }
 }
