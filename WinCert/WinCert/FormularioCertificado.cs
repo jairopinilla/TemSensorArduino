@@ -159,6 +159,25 @@ namespace WinCert
             chartGrafico.DataSource = dtLineaTemperaturasGenera;
             dataTemperaturasGrid.DataSource = selected;
 
+
+            /***********************************************************************/
+            /***********************************************************************/
+
+            //listViewTemperatura.Items.Clear();
+            //listViewTemperatura.FullRowSelect = true;
+
+            //foreach (DataRow row in dtLineaTemperaturasGenera.Rows)
+            //{
+            //    ListViewItem item = new ListViewItem(row["Fecha"].ToString());
+            //    item.SubItems.Add(row["Sensor1"].ToString());
+            //    item.SubItems.Add(row["Sensor2"].ToString());
+            //    item.SubItems.Add(row["Sensor3"].ToString());
+            //    listViewTemperatura.Items.Add(item); //Add this row to the ListView
+            //}
+
+            /***********************************************************************/
+            /***********************************************************************/
+
             conexion.Close();
 
             //******************************************************
@@ -272,27 +291,7 @@ namespace WinCert
             e.Graphics.DrawImage(bmp, 0, 0, tgtWidthMM, tgtHeightMM);
         }
 
-        private void doc_PrintPageTemperaturas(object sender, PrintPageEventArgs e)
-        {
-            Bitmap bmp = new Bitmap(dataTemperaturasGrid.Width, dataTemperaturasGrid.Height);
-
-            float tgtWidthMM = 210;  //A4 paper size
-            float tgtHeightMM = 297;
-            float tgtWidthInches = tgtWidthMM / 25.4f;
-            float tgtHeightInches = tgtHeightMM / 25.4f;
-            float srcWidthPx = bmp.Width;
-            float srcHeightPx = bmp.Height;
-            float dpiX = srcWidthPx / tgtWidthInches;
-            float dpiY = srcHeightPx / tgtHeightInches;
-
-            bmp.SetResolution(dpiX, dpiY);
-
-            panelGrafico.DrawToBitmap(bmp, dataTemperaturasGrid.ClientRectangle);
-
-            e.Graphics.PageUnit = GraphicsUnit.Millimeter;
-            e.Graphics.DrawImage(bmp, 0, 0, tgtWidthMM, tgtHeightMM);
-        }
-
+   
 
         private void button1imprimir_Click(object sender, EventArgs e)
         {
@@ -342,13 +341,61 @@ namespace WinCert
 
         }
 
+
+        Bitmap bmpListTemp;
+
         private void ButtonImprimirTemperatura_Click(object sender, EventArgs e)
         {
-            int pixelsWidth = 612;
-            int pixelsHeight = 792;     //1 cm ~ 37.5      
-            paneltemperaturas.Size = new Size(pixelsWidth, pixelsHeight);
+           
+
+            int height = dataTemperaturasGrid.Height;
+            dataTemperaturasGrid.Height = dataTemperaturasGrid.RowCount * dataTemperaturasGrid.RowTemplate.Height * 2;
+            bmpListTemp = new Bitmap(dataTemperaturasGrid.Width, dataTemperaturasGrid.Height);
+            dataTemperaturasGrid.DrawToBitmap(bmpListTemp, new Rectangle(0, 0, dataTemperaturasGrid.Width, dataTemperaturasGrid.Height));
+
+            dataTemperaturasGrid.Height = height;
+            //printDialog1.ShowDialog();
+
+            Size panelSize = new Size(526, dataTemperaturasGrid.Height);
+            paneltemperaturas.Size = panelSize;
+
+            //int pixelsWidth = 612;
+            //int pixelsHeight = dataTemperaturasGrid.RowCount * dataTemperaturasGrid.RowTemplate.Height * 2 + 20;     //1 cm ~ 37.5      
+            //paneltemperaturas.Size = new Size(pixelsWidth, pixelsHeight);
 
             PrintTemperaturas();
+
+        }
+
+
+        private void doc_PrintPageTemperaturas(object sender, PrintPageEventArgs e)
+        {
+            //float tgtWidthMM = 210;  //A4 paper size
+            //float tgtHeightMM = 297;
+            //float tgtWidthInches = tgtWidthMM / 25.4f;
+            //float tgtHeightInches = tgtHeightMM / 25.4f;
+            //float srcWidthPx = bmpListTemp.Width;
+            //float srcHeightPx = bmpListTemp.Height;
+            //float dpiX = srcWidthPx / tgtWidthInches;
+            //float dpiY = srcHeightPx / tgtHeightInches;
+
+            //bmpListTemp.SetResolution(dpiX, dpiY);
+
+            //panelGrafico.DrawToBitmap(bmpListTemp, paneltemperaturas.ClientRectangle);
+
+            //e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+            //e.Graphics.DrawImage(bmpListTemp, 0, 0, tgtWidthMM, tgtHeightMM);
+
+
+           e.Graphics.DrawImage(bmpListTemp, 0, 0);
+        }
+
+
+
+
+        private void DataTemperaturasGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
