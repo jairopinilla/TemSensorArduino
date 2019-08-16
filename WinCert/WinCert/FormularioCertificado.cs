@@ -160,6 +160,8 @@ namespace WinCert
             chartGrafico.DataSource = dtLineaTemperaturasGenera;
             dataTemperaturasGrid.DataSource = selected;
 
+            dataTemperaturasGrid.Visible = false;
+
 
             /***********************************************************************/
             /***********************************************************************/
