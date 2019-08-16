@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -397,5 +398,49 @@ namespace WinCert
         {
 
         }
-    }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            WriteToCsvFile(dtLineaTemperaturasGenera, "C:\\temperaturas.csv");
+        }
+
+        public static void WriteToCsvFile( DataTable dataTable, string filePath)
+        {
+            StringBuilder fileContent = new StringBuilder();
+
+            foreach (var col in dataTable.Columns)
+            {
+                fileContent.Append(col.ToString() + ",");
+            }
+
+            fileContent.Replace(",", System.Environment.NewLine, fileContent.Length - 1, 1);
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                foreach (var column in dr.ItemArray)
+                {
+                    fileContent.Append("\"" + column.ToString() + "\",");
+                }
+
+                fileContent.Replace(",", System.Environment.NewLine, fileContent.Length - 1, 1);
+            }
+
+         //   System.IO.File.WriteAllText(filePath, fileContent.ToString());
+
+
+            SaveFileDialog Guardar = new SaveFileDialog();
+            Guardar.Title = "Guardar Archivo...";
+            Guardar.Filter = "Archivo de Texto (*.csv)|*.txt|Todos los Archivos (*.*)|*.*";
+
+            if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                File.WriteAllText(Guardar.FileName, fileContent.ToString());
+            }
+
+
+        }
+    
+
+
+}
 }

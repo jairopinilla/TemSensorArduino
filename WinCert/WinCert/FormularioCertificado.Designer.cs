@@ -79,6 +79,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.botondescsv = new System.Windows.Forms.Button();
             this.panelCertificado.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -169,7 +170,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.24657F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.75343F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.tableLayoutPanel4.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label13, 2, 0);
@@ -201,7 +202,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(97, 4);
+            this.label12.Location = new System.Drawing.Point(96, 4);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 1;
@@ -211,7 +212,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(268, 4);
+            this.label13.Location = new System.Drawing.Point(266, 4);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 2;
@@ -221,7 +222,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(443, 4);
+            this.label14.Location = new System.Drawing.Point(441, 4);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 3;
@@ -232,21 +233,21 @@
             this.textBox2FacturaGuia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2FacturaGuia.Location = new System.Drawing.Point(7, 31);
             this.textBox2FacturaGuia.Name = "textBox2FacturaGuia";
-            this.textBox2FacturaGuia.Size = new System.Drawing.Size(83, 13);
+            this.textBox2FacturaGuia.Size = new System.Drawing.Size(82, 13);
             this.textBox2FacturaGuia.TabIndex = 4;
             // 
             // textBox2Tipo
             // 
             this.textBox2Tipo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Tipo.Location = new System.Drawing.Point(97, 31);
+            this.textBox2Tipo.Location = new System.Drawing.Point(96, 31);
             this.textBox2Tipo.Name = "textBox2Tipo";
-            this.textBox2Tipo.Size = new System.Drawing.Size(164, 13);
+            this.textBox2Tipo.Size = new System.Drawing.Size(163, 13);
             this.textBox2Tipo.TabIndex = 5;
             // 
             // textBox2Tamano
             // 
             this.textBox2Tamano.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Tamano.Location = new System.Drawing.Point(268, 31);
+            this.textBox2Tamano.Location = new System.Drawing.Point(266, 31);
             this.textBox2Tamano.Name = "textBox2Tamano";
             this.textBox2Tamano.Size = new System.Drawing.Size(164, 13);
             this.textBox2Tamano.TabIndex = 6;
@@ -254,7 +255,7 @@
             // textBox2Cantidad
             // 
             this.textBox2Cantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2Cantidad.Location = new System.Drawing.Point(443, 31);
+            this.textBox2Cantidad.Location = new System.Drawing.Point(441, 31);
             this.textBox2Cantidad.Name = "textBox2Cantidad";
             this.textBox2Cantidad.Size = new System.Drawing.Size(86, 13);
             this.textBox2Cantidad.TabIndex = 7;
@@ -550,6 +551,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.botondescsv);
             this.tabPage3.Controls.Add(this.buttonImprimirTemperatura);
             this.tabPage3.Controls.Add(this.paneltemperaturas);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -633,6 +635,16 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.doc_PrintPageTemperaturas);
+            // 
+            // botondescsv
+            // 
+            this.botondescsv.Location = new System.Drawing.Point(274, 22);
+            this.botondescsv.Name = "botondescsv";
+            this.botondescsv.Size = new System.Drawing.Size(145, 23);
+            this.botondescsv.TabIndex = 2;
+            this.botondescsv.Text = "Descargar en CSV";
+            this.botondescsv.UseVisualStyleBackColor = true;
+            this.botondescsv.Click += new System.EventHandler(this.Button3_Click);
             // 
             // FormularioCertificado
             // 
@@ -719,5 +731,6 @@
         private System.Windows.Forms.DataGridView dataTemperaturasGrid;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button botondescsv;
     }
 }
