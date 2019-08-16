@@ -30,6 +30,7 @@ namespace WinCert
 
         public int idCertificadoenCurso = 0;
         public int tiempoenCertificacion = 0;
+        public int tiempoenCertificacionIngresa = 0;
 
         public int temperaturaParaCertificar = 56;
         public int MinutosTerminarCertificacion = 40;
@@ -455,8 +456,12 @@ namespace WinCert
                 }
 
                 /**********************************************/
+                if (tiempoenCertificacionIngresa < tiempoenCertificacion)
+                {
+                    ingresaLineaCertificado(idCertificadoenCurso, temperatura1, temperatura2, temperatura3, DateTime.Now);
+                    tiempoenCertificacionIngresa = tiempoenCertificacion;
 
-                ingresaLineaCertificado(idCertificadoenCurso, temperatura1, temperatura2, temperatura3, DateTime.Now);
+                }
 
 
             }

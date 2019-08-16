@@ -141,7 +141,7 @@ namespace WinCert
 
             SQLiteConnection conexion = new SQLiteConnection("Data Source=cert.sqlite;Version=3;");
             conexion.Open();
-            string consulta = "select * from LineaCertificacion where Certificacion_id=" + certificaid;
+            string consulta = "select * from LineaCertificacion where Certificacion_id=" + certificaid+ " and Sensor1>56 and Sensor2>56 and Sensor3>56 order by LineaCertificacion_id asc";
             SQLiteDataAdapter db = new SQLiteDataAdapter(consulta, conexion);
 
             DataSet ds = new DataSet();
