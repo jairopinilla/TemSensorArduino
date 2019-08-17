@@ -1484,6 +1484,7 @@ namespace WinCert
 
             TiempoInicio.Text = DateTime.Now.ToString();
             tiempoenCertificacion = 0;
+            tiempoenCertificacionIngresa = 0;
 
             EnCertificacion = true;
             esPerandoCumplirTiempoparaCer = true;
@@ -1527,6 +1528,7 @@ namespace WinCert
 
             idCertificadoenCurso = 0;
             tiempoenCertificacion = 0;
+            tiempoenCertificacionIngresa = 0;
             fechaInicioCertificacion = DateTime.Now;
 
         }
